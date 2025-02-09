@@ -42,7 +42,7 @@ const Index = () => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-2">
             <div className="relative">
-              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl pointer-events-none font-medium text-blue-900">
+              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl pointer-events-none font-medium text-emerald-500">
                 (57)
               </div>
               <Input
@@ -50,8 +50,8 @@ const Index = () => {
                 value={phone}
                 onChange={(e) => validatePhone(e.target.value)}
                 style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
-                className={`block w-full h-20 font-medium pl-24 pr-10 rounded-xl border-2 focus:border-blue-900 focus:ring-blue-900 transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                  phone ? 'text-blue-900' : 'text-gray-900'
+                className={`block w-full h-20 font-medium pl-24 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
+                  phone ? 'text-emerald-500' : 'text-gray-900'
                 }`}
                 placeholder="319 565 0368"
                 autoFocus
@@ -74,7 +74,7 @@ const Index = () => {
             type="submit"
             className={`w-full h-14 text-lg ${
               phone.length === 10
-                ? "bg-blue-900 hover:bg-blue-800"
+                ? "bg-emerald-500 hover:bg-emerald-600"
                 : "bg-gray-300 hover:bg-gray-400"
             } text-white rounded-xl transition-all duration-200 ease-in-out`}
           >
