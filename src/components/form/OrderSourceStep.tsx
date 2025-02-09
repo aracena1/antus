@@ -31,10 +31,23 @@ const OrderSourceStep = ({
   if (showSuccess) {
     return (
       <div className="flex flex-col items-center justify-center space-y-6">
-        <div className="relative w-full h-32 flex items-center justify-center">
-          <PartyPopper className="w-20 h-20 text-[#1C999F] animate-bounce absolute" />
-          <PartyPopper className="w-16 h-16 text-[#FF3366] animate-bounce absolute -left-4 top-0 rotate-[-45deg]" />
-          <PartyPopper className="w-16 h-16 text-[#FFD700] animate-bounce absolute -right-4 top-0 rotate-45" />
+        <div className="relative w-full h-48 flex items-center justify-center">
+          {/* Central confetti */}
+          <PartyPopper className="w-24 h-24 text-[#1C999F] animate-bounce absolute" />
+          
+          {/* Left side confetti */}
+          <PartyPopper className="w-20 h-20 text-[#FF3366] animate-bounce absolute -left-4 top-8 rotate-[-45deg]" />
+          <PartyPopper className="w-16 h-16 text-[#FFD700] animate-bounce absolute left-12 top-0 rotate-[-25deg]" />
+          <PartyPopper className="w-14 h-14 text-[#1C999F] animate-bounce absolute left-8 bottom-0 rotate-[-65deg]" />
+          
+          {/* Right side confetti */}
+          <PartyPopper className="w-20 h-20 text-[#FFD700] animate-bounce absolute -right-4 top-8 rotate-45" />
+          <PartyPopper className="w-16 h-16 text-[#FF3366] animate-bounce absolute right-12 top-0 rotate-25" />
+          <PartyPopper className="w-14 h-14 text-[#1C999F] animate-bounce absolute right-8 bottom-0 rotate-65" />
+          
+          {/* Additional confetti in different positions */}
+          <PartyPopper className="w-12 h-12 text-[#FF3366] animate-bounce absolute left-1/4 top-4 rotate-[-15deg]" />
+          <PartyPopper className="w-12 h-12 text-[#FFD700] animate-bounce absolute right-1/4 top-4 rotate-15" />
         </div>
         <div className="animate-scale-in">
           <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
