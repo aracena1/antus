@@ -28,7 +28,7 @@ const NameStep = ({ nombreCompleto, onBack, onChange, onSubmit }: NameStepProps)
 
         <div className="text-left mb-4 mt-4">
           <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-            Tu Nombre y Apellido
+            Nombre Completo
           </h1>
         </div>
       </div>
@@ -68,3 +68,4 @@ const NameStep = ({ nombreCompleto, onBack, onChange, onSubmit }: NameStepProps)
 };
 
 export default NameStep;
+
