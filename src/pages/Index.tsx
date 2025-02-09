@@ -49,8 +49,14 @@ const Index = () => {
                 className={`block w-full h-16 text-2xl pl-4 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all ${
                   phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
-                placeholder="(57) 3195650368"
+                placeholder="(57) 319 565 0368"
                 autoFocus
+                style={{ 
+                  '::placeholder': { 
+                    color: '#9F9EA1',
+                    opacity: 0.7 
+                  }
+                }}
               />
               {phone && !isValid && (
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
