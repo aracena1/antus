@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTrigger,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { ChevronRight, Search, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -41,6 +42,7 @@ const MainMenu = () => {
         </button>
       </DialogTrigger>
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
+        <DialogTitle className="sr-only">Seleccionar Departamento</DialogTitle>
         <div className="relative min-h-screen">
           <DialogClose className="absolute right-6 top-6 z-10">
             <div className="bg-[#1C999F] rounded-full p-4 hover:opacity-90 transition-colors">
@@ -56,6 +58,7 @@ const MainMenu = () => {
                 className="pl-10 pr-4 py-2 w-full border-2 rounded-xl focus:outline-none focus:border-gray-400"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                autoFocus
               />
             </div>
           </div>
