@@ -20,8 +20,8 @@ const departmentCities: { [key: string]: string[] } = {
     "Itagüí",
     "Rionegro",
   ],
-  bogota: ["Bogotá"],
-  valle: [
+  "bogota-dc": ["Bogotá"],
+  "valle-del-cauca": [
     "Cali",
     "Palmira",
     "Buenaventura",
@@ -39,6 +39,12 @@ const departmentCities: { [key: string]: string[] } = {
     "Puerto Colombia",
     "Galapa",
   ],
+  santander: ["Bucaramanga", "Floridablanca", "Girón", "Piedecuesta", "Barrancabermeja"],
+  cundinamarca: ["Soacha", "Facatativá", "Zipaquirá", "Chía", "Mosquera", "Madrid"],
+  bolivar: ["Cartagena", "Magangué", "Carmen de Bolívar", "Turbaco", "Arjona"],
+  risaralda: ["Pereira", "Dosquebradas", "Santa Rosa de Cabal", "La Virginia"],
+  caldas: ["Manizales", "Villamaría", "Chinchiná", "La Dorada"],
+  tolima: ["Ibagué", "Espinal", "Melgar", "Honda", "Mariquita"],
 };
 
 const Index = () => {
@@ -125,30 +131,21 @@ const Index = () => {
     }));
   };
 
-  const handleSelectChange = (value: string, name: string) => {
-    if (name === 'departamento') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value,
-        ciudad: '' // Reset ciudad when departamento changes
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
-    }
+  const handleDepartmentChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      departamento: value,
+      ciudad: '' // Reset ciudad when departamento changes
+    }));
   };
 
-  const isNameComplete = formData.nombreCompleto;
-  const isCedulaComplete = formData.cedula.length > 0;
-  const isAddressComplete = formData.departamento && formData.ciudad && formData.barrio;
+  const availableCities = formData.departamento ? departmentCities[formData.departamento] || [] : [];
+  const isCitySelected = formData.ciudad !== "";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md">
         <div className="relative w-full h-full flex items-center justify-center">
-          {/* Phone step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 1 ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
@@ -200,7 +197,6 @@ const Index = () => {
             )}
           </div>
 
-          {/* Name step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
@@ -258,7 +254,6 @@ const Index = () => {
             )}
           </div>
 
-          {/* Cedula step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 3 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
@@ -316,7 +311,6 @@ const Index = () => {
             )}
           </div>
 
-          {/* Address step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 4 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
@@ -344,25 +338,29 @@ const Index = () => {
                   <div className="space-y-6">
                     <div>
                       <label className="block text-gray-600 mb-2 text-lg">Departamento</label>
-                      <MainMenu />
+                      <MainMenu onDepartmentSelect={handleDepartmentChange} />
                     </div>
 
                     <div>
                       <label className="block text-gray-600 mb-2 text-lg">Ciudad o pueblo</label>
                       <Select
-                        onValueChange={(value) => handleSelectChange(value, 'ciudad')}
+                        onValueChange={(value) => setFormData(prev => ({ ...prev, ciudad: value }))}
                         value={formData.ciudad}
                       >
                         <SelectTrigger 
                           className={`w-full h-16 text-xl border-2 rounded-xl ${
-                            formData.ciudad ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400'
+                            isCitySelected ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400 border-gray-200'
                           }`}
                         >
                           <SelectValue placeholder="Elige una ciudad" />
                         </SelectTrigger>
-                        <SelectContent className="max-h-[400px] w-[400px] p-2">
-                          {formData.departamento && departmentCities[formData.departamento]?.map((city) => (
-                            <SelectItem key={city} value={city.toLowerCase()}>
+                        <SelectContent className="max-h-[400px]">
+                          {availableCities.map((city) => (
+                            <SelectItem 
+                              key={city} 
+                              value={city}
+                              className="text-lg py-3 hover:bg-gray-50 cursor-pointer"
+                            >
                               {city}
                             </SelectItem>
                           ))}
@@ -378,7 +376,7 @@ const Index = () => {
                         value={formData.barrio}
                         onChange={handleInputChange}
                         className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 ${
-                          formData.barrio ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-900'
+                          formData.barrio ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-900 border-gray-200'
                         }`}
                         placeholder="Escribe tu barrio"
                         required
@@ -389,11 +387,11 @@ const Index = () => {
                   <Button
                     type="submit"
                     className={`w-full h-14 text-lg ${
-                      isAddressComplete
+                      formData.departamento && formData.ciudad && formData.barrio
                         ? "bg-[#1C999F] hover:bg-[#158589]"
                         : "bg-gray-300 cursor-not-allowed"
                     } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-                    disabled={!isAddressComplete}
+                    disabled={!formData.departamento || !formData.ciudad || !formData.barrio}
                   >
                     Continuar
                   </Button>

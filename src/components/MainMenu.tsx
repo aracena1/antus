@@ -13,7 +13,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
-const MainMenu = () => {
+interface MainMenuProps {
+  onDepartmentSelect: (value: string) => void;
+}
+
+const MainMenu = ({ onDepartmentSelect }: MainMenuProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("elige-un-departamento");
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +46,8 @@ const MainMenu = () => {
     );
     if (selectedDept) {
       setSelectedDepartment(value);
-      setIsOpen(false); // Close the dialog
+      onDepartmentSelect(value);
+      setIsOpen(false);
     }
   };
 
@@ -124,4 +129,3 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
-
