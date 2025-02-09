@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ChevronLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface PaymentMethodStepProps {
@@ -18,7 +18,10 @@ const PaymentMethodStep = ({
 }: PaymentMethodStepProps) => {
   const handleMethodChange = (value: string) => {
     onMethodChange(value);
-    const syntheticEvent = new Event("submit") as unknown as React.FormEvent;
+    const syntheticEvent = {
+      preventDefault: () => {},
+      target: document.createElement('form')
+    } as React.FormEvent<HTMLFormElement>;
     onSubmit(syntheticEvent);
   };
 
