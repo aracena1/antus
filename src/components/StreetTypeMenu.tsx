@@ -70,7 +70,6 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
           <ScrollArea className="h-[calc(100vh-100px)]">
             <div className="space-y-2">
               <RadioGroup 
-                defaultValue="elige-tipo-de-via"
                 value={selectedStreetType}
                 onValueChange={handleStreetTypeSelect}
               >
