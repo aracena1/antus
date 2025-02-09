@@ -30,7 +30,7 @@ const StreetDetailsStep = ({
           <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
             ¿Y en qué parte de Medellín?
           </h1>
-          <p className="text-xl text-gray-500">
+          <p className="text-xl text-[#666666]">
             Danos la dirección completa para que el desodorante sí llegue
           </p>
         </div>
@@ -39,43 +39,43 @@ const StreetDetailsStep = ({
       <form onSubmit={onSubmit} className="space-y-6">
         <div className="space-y-6">
           <div>
-            <label className="block text-gray-600 mb-2 text-lg">
-              {selectedStreetType}
+            <label className="block text-[#666666] text-lg mb-2">
+              {selectedStreetType.toLowerCase()}
             </label>
             <Input
               type="text"
-              className="h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all"
+              className="h-14 text-xl font-normal rounded-2xl border focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white"
               placeholder="30A"
             />
           </div>
 
           <div>
-            <label className="block text-gray-600 mb-2 text-lg">
+            <label className="block text-[#666666] text-lg mb-2">
               Segunda parte de tu dirección
             </label>
-            <div className="flex gap-4">
-              <span className="flex items-center text-xl font-medium text-[#1C999F]">#</span>
+            <div className="flex gap-4 items-center">
+              <span className="text-[#1C999F] text-xl font-medium">#</span>
               <Input
                 type="text"
-                className="h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all"
+                className="h-14 text-xl font-normal rounded-2xl border focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white"
                 placeholder="10B"
               />
-              <span className="flex items-center text-xl font-medium text-[#1C999F]">-</span>
+              <span className="text-[#1C999F] text-xl font-medium">-</span>
               <Input
                 type="text"
-                className="h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all"
+                className="h-14 text-xl font-normal rounded-2xl border focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white"
                 placeholder="30"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-gray-600 mb-2 text-lg">
+            <label className="block text-[#666666] text-lg mb-2">
               Completa tu dirección
             </label>
             <Input
               type="text"
-              className="h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all"
+              className="h-14 text-xl font-normal rounded-2xl border focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white"
               placeholder="Casa 5, apto 204"
             />
           </div>
@@ -83,7 +83,7 @@ const StreetDetailsStep = ({
 
         <Button
           type="submit"
-          className="w-full h-14 text-lg bg-[#1C999F] hover:bg-[#158589] text-white rounded-xl transition-all duration-200 ease-in-out mt-4"
+          className="w-full h-14 text-lg bg-[#1C999F] hover:bg-[#158589] text-white rounded-2xl transition-all duration-200 ease-in-out mt-4"
         >
           Continuar
         </Button>
@@ -93,3 +93,4 @@ const StreetDetailsStep = ({
 };
 
 export default StreetDetailsStep;
+
