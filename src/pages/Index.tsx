@@ -170,7 +170,6 @@ const Index = () => {
                         value={formData.segundoApellido}
                         onChange={handleInputChange}
                         className="block w-full h-14 text-lg rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F]"
-                        placeholder="Escribe tu segundo apellido"
                       />
                     </div>
                   </div>
