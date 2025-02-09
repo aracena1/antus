@@ -48,7 +48,7 @@ const StreetDetailsStep = ({
         </button>
 
         <div className="text-left">
-          <h1 className="text-[40px] leading-[1.15] font-normal text-black mb-8">
+          <h1 className="text-[40px] leading-[1.15] font-normal mb-8">
             ¿Y en qué parte de Medellín?
           </h1>
         </div>
@@ -148,3 +148,4 @@ const StreetDetailsStep = ({
 };
 
 export default StreetDetailsStep;
+
