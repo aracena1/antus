@@ -33,9 +33,8 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
   };
 
   const handleStreetTypeSelect = (value: string) => {
-    const normalizedValue = normalizeValue(value);
-    if (normalizedValue !== "elige-tipo-de-via") {
-      onStreetTypeSelect(normalizedValue);
+    if (value !== "elige-tipo-de-via") {
+      onStreetTypeSelect(value);
       setIsOpen(false);
     }
   };
