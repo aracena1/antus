@@ -50,7 +50,7 @@ const Index = () => {
                 value={phone}
                 onChange={(e) => validatePhone(e.target.value)}
                 className={`block w-full h-20 text-3xl font-medium pl-24 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                  phone ? 'text-emerald-500' : 'text-gray-900'
+                  phone ? 'text-emerald-500 text-3xl font-medium' : 'text-gray-900 text-3xl font-medium'
                 }`}
                 placeholder="319 565 0368"
                 autoFocus
