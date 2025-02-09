@@ -122,7 +122,7 @@ const Index = () => {
                   </button>
                   
                   <div className="text-left mb-8 mt-20">
-                    <h1 className="text-4xl font-medium text-black mb-2 leading-tight">
+                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
                       Tu nombre completo
                     </h1>
                   </div>
