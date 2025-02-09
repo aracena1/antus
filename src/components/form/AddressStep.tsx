@@ -76,12 +76,12 @@ const AddressStep = ({
               name="barrio"
               value={formData.barrio}
               onChange={onChange}
-              className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
+              className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-xl placeholder:font-medium ${
                 formData.barrio
                   ? "text-[#1C999F] border-[#1C999F]"
                   : "text-gray-900 border-gray-200"
               }`}
-              placeholder="Escribe tu barrio"
+              placeholder="Elige tu barrio"
               required
             />
           </div>
@@ -104,3 +104,4 @@ const AddressStep = ({
 };
 
 export default AddressStep;
+
