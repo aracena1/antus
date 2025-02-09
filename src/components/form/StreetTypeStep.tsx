@@ -19,6 +19,11 @@ const StreetTypeStep = ({
   onSubmit,
   selectedCity,
 }: StreetTypeStepProps) => {
+  const handleStreetTypeSelect = (value: string) => {
+    onStreetTypeChange(value);
+    onSubmit(new Event('submit') as any);
+  };
+
   return (
     <>
       <div className="relative w-full">
@@ -40,31 +45,17 @@ const StreetTypeStep = ({
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-6">
-        <div className="space-y-6">
-          <div>
-            <label className="block text-gray-600 mb-2 text-lg">
-              Tipo de vía
-            </label>
-            <StreetTypeMenu 
-              onStreetTypeSelect={onStreetTypeChange}
-              selectedStreetType={streetType}
-            />
-          </div>
+      <div className="space-y-6">
+        <div>
+          <label className="block text-gray-600 mb-2 text-lg">
+            Tipo de vía
+          </label>
+          <StreetTypeMenu 
+            onStreetTypeSelect={handleStreetTypeSelect}
+            selectedStreetType={streetType}
+          />
         </div>
-
-        <Button
-          type="submit"
-          className={`w-full h-14 text-lg ${
-            streetType && streetType !== "elige-tipo-de-via"
-              ? "bg-[#1C999F] hover:bg-[#158589]"
-              : "bg-gray-300 cursor-not-allowed"
-          } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-          disabled={!streetType || streetType === "elige-tipo-de-via"}
-        >
-          Continuar
-        </Button>
-      </form>
+      </div>
     </>
   );
 };
