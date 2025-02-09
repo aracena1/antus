@@ -8,6 +8,7 @@ import StreetTypeStep from "@/components/form/StreetTypeStep";
 import StreetDetailsStep from "@/components/form/StreetDetailsStep";
 import QuantityStep from "@/components/form/QuantityStep";
 import PaymentMethodStep from "@/components/form/PaymentMethodStep";
+import TransferPhotoStep from "@/components/form/TransferPhotoStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -66,7 +67,8 @@ const Index = () => {
       segundaParte: "",
       complemento: ""
     },
-    metodoPago: ""
+    metodoPago: "",
+    fotoTransferencia: null as File | null
   });
   const { toast } = useToast();
 
@@ -123,8 +125,17 @@ const Index = () => {
   const handlePaymentMethodSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.metodoPago) {
-      setStep(9);
+      if (formData.metodoPago === "transfer") {
+        setStep(9);
+      } else {
+        setStep(10);
+      }
     }
+  };
+
+  const handleTransferPhotoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStep(10);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -302,7 +313,20 @@ const Index = () => {
               step === 9 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             }`}
           >
-            {step === 9 && (
+            {step === 9 && formData.metodoPago === "transfer" && (
+              <TransferPhotoStep
+                onBack={() => setStep(8)}
+                onSubmit={handleTransferPhotoSubmit}
+              />
+            )}
+          </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 10 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 10 && (
               <>
                 <button onClick={() => {
                   toast({
