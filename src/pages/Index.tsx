@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,8 +10,7 @@ const Index = () => {
   const [phone, setPhone] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [formData, setFormData] = useState({
-    nombres: "",
-    primerApellido: "",
+    nombreCompleto: "",
     cedula: "",
   });
   const { toast } = useToast();
@@ -32,7 +32,7 @@ const Index = () => {
 
   const handleNameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.nombres && formData.primerApellido) {
+    if (formData.nombreCompleto) {
       setStep(3);
     }
   };
@@ -55,7 +55,7 @@ const Index = () => {
     }));
   };
 
-  const isNameFormComplete = formData.nombres && formData.primerApellido;
+  const isNameComplete = formData.nombreCompleto;
   const isCedulaComplete = formData.cedula.length > 0;
 
   return (
@@ -140,36 +140,18 @@ const Index = () => {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Nombres
+                        Nombre y apellido
                       </label>
                       <Input
                         type="text"
-                        name="nombres"
-                        value={formData.nombres}
+                        name="nombreCompleto"
+                        value={formData.nombreCompleto}
                         onChange={handleInputChange}
                         style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
                         className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                          formData.nombres ? 'text-[#1C999F]' : 'text-gray-900'
+                          formData.nombreCompleto ? 'text-[#1C999F]' : 'text-gray-900'
                         }`}
-                        placeholder="Escribe tu nombre"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Primer apellido
-                      </label>
-                      <Input
-                        type="text"
-                        name="primerApellido"
-                        value={formData.primerApellido}
-                        onChange={handleInputChange}
-                        style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
-                        className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                          formData.primerApellido ? 'text-[#1C999F]' : 'text-gray-900'
-                        }`}
-                        placeholder="Escribe tu apellido"
+                        placeholder="Escribe tu nombre completo"
                         required
                       />
                     </div>
@@ -178,11 +160,11 @@ const Index = () => {
                   <Button
                     type="submit"
                     className={`w-full h-14 text-lg ${
-                      isNameFormComplete
+                      isNameComplete
                         ? "bg-[#1C999F] hover:bg-[#158589]"
                         : "bg-gray-300 cursor-not-allowed"
                     } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-                    disabled={!isNameFormComplete}
+                    disabled={!isNameComplete}
                   >
                     Continuar
                   </Button>
@@ -216,9 +198,6 @@ const Index = () => {
 
                 <form onSubmit={handleCedulaSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-xl font-medium text-gray-900 mb-2">
-                      Número de cédula
-                    </label>
                     <Input
                       type="text"
                       name="cedula"
