@@ -81,7 +81,7 @@ const AddressStep = ({
                   ? "text-[#1C999F] border-[#1C999F]"
                   : "text-gray-900 border-gray-200"
               }`}
-              placeholder="Elige tu barrio"
+              placeholder="Escribe tu barrio"
               required
             />
           </div>
@@ -104,4 +104,3 @@ const AddressStep = ({
 };
 
 export default AddressStep;
-
