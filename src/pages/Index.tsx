@@ -166,7 +166,7 @@ const Index = () => {
                         className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
                           formData.nombreCompleto ? 'text-[#1C999F]' : 'text-gray-900'
                         }`}
-                        placeholder="Nombre y apellido"
+                        placeholder="Nombre y Apellido"
                         required
                       />
                     </div>
