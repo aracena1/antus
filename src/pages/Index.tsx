@@ -36,7 +36,7 @@ const Index = () => {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-semibold text-gray-900 mb-2">
-            Por último, tu celular
+            Bienvenida, necesitamos tu celular
           </h1>
           <p className="text-gray-600">
             Lo necesitamos para avisarte de la entrega de tu tarjeta.
@@ -75,7 +75,7 @@ const Index = () => {
           <Button
             type="submit"
             disabled={!isValid}
-            className="w-full h-14 text-lg bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 text-lg bg-[#F2FCE2] hover:bg-[#E2ECD2] text-gray-800 rounded-xl transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Enviar
           </Button>
