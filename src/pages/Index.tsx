@@ -137,7 +137,7 @@ const Index = () => {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Nombres
+                        Nombre
                       </label>
                       <Input
                         type="text"
