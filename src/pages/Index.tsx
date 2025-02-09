@@ -6,19 +6,21 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [phone, setPhone] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(true);
   const { toast } = useToast();
 
   const validatePhone = (value: string) => {
     // Permite solo números y limita a 10 dígitos después del código de país
     const cleanedValue = value.replace(/\D/g, "").slice(0, 10);
     setPhone(cleanedValue);
-    setIsValid(cleanedValue.length === 10);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isValid) {
+    const isPhoneValid = phone.length === 10;
+    setIsValid(isPhoneValid);
+    
+    if (isPhoneValid) {
       toast({
         title: "Número registrado",
         description: "Te contactaremos pronto",
@@ -74,8 +76,7 @@ const Index = () => {
 
           <Button
             type="submit"
-            disabled={!isValid}
-            className="w-full h-14 text-lg bg-[#F2FCE2] hover:bg-[#E2ECD2] text-gray-800 rounded-xl transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 text-lg bg-[#89D185] hover:bg-[#73B673] text-white rounded-xl transition-all duration-200 ease-in-out"
           >
             Enviar
           </Button>
