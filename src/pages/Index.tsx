@@ -32,7 +32,7 @@ const Index = () => {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Bienvenida, necesitamos tu celular
+            Bienvenida
           </h1>
           <p className="text-gray-600 text-lg">
             Lo necesitamos para avisarte de la entrega del desodorante.
