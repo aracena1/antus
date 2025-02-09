@@ -42,14 +42,17 @@ const Index = () => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-2">
             <div className="relative">
+              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl text-gray-900 pointer-events-none">
+                (57)
+              </div>
               <Input
                 type="tel"
-                value={`(57) ${phone}`}
-                onChange={(e) => validatePhone(e.target.value.replace("(57) ", ""))}
-                className={`block w-full h-20 text-3xl pl-6 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 ${
+                value={phone}
+                onChange={(e) => validatePhone(e.target.value)}
+                className={`block w-full h-20 text-3xl pl-24 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 ${
                   phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
-                placeholder="(57) 319 565 0368"
+                placeholder="319 565 0368"
                 autoFocus
               />
               {phone && !isValid && (
