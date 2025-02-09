@@ -50,6 +50,7 @@ const Index = () => {
                   phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
                 placeholder="(57) 3195650368"
+                autoFocus
               />
               {phone && !isValid && (
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
