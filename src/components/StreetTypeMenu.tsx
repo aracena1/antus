@@ -4,10 +4,9 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
-  DialogClose,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -65,11 +64,6 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
         <DialogTitle className="sr-only">Seleccionar Tipo de Vía</DialogTitle>
         <div className="relative min-h-screen">
-          <DialogClose className="absolute right-2 top-2 z-10">
-            <div className="bg-[#1C999F]/40 rounded-full p-4 hover:bg-[#1C999F]/60 transition-colors">
-              <X className="h-6 w-6 text-white" />
-            </div>
-          </DialogClose>
           <ScrollArea className="h-[calc(100vh-32px)] px-8 pt-6">
             <div className="space-y-2">
               <RadioGroup 
