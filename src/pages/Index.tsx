@@ -116,7 +116,7 @@ const Index = () => {
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="absolute left-0 -top-14 p-2 text-black/60 hover:text-black transition-colors"
+                    className="absolute left-0 -top-16 p-2 text-black/60 hover:text-black transition-colors"
                   >
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
