@@ -47,18 +47,15 @@ const StreetDetailsStep = ({
           <ChevronLeft size={36} strokeWidth={1.5} />
         </button>
 
-        <div className="text-left mb-12">
-          <h1 className="text-4xl font-medium text-black mb-2 leading-tight">
+        <div className="text-left mb-8">
+          <h1 className="text-4xl font-medium text-black leading-tight">
             ¿Y en qué parte de Medellín?
           </h1>
-          <p className="text-xl text-[#666666]/80">
-            Danos la dirección completa para que el desodorante sí llegue
-          </p>
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-8">
-        <div className="space-y-8">
+      <form onSubmit={onSubmit} className="space-y-6">
+        <div className="space-y-6">
           <div>
             <label className="block text-[#666666]/80 text-lg mb-2">
               Tipo de vía
