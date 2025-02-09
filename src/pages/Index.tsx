@@ -289,13 +289,10 @@ const Index = () => {
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-left mb-8">
+                  <div className="text-left mb-8 mt-8">
                     <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
                       ¿A dónde quieres que llegue tu desodorante?
                     </h1>
-                    <p className="text-gray-600 text-lg">
-                      El envío de tu desodorante no tiene costo.
-                    </p>
                   </div>
                 </div>
 
