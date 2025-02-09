@@ -65,7 +65,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
         <DialogTitle className="sr-only">Seleccionar Tipo de Vía</DialogTitle>
         <div className="relative min-h-screen">
-          <DialogClose className="absolute right-6 top-6 z-10">
+          <DialogClose className="absolute right-4 top-4 z-10">
             <div className="bg-[#1C999F] rounded-full p-4 hover:opacity-90 transition-colors">
               <X className="h-6 w-6 text-white" />
             </div>
@@ -104,3 +104,4 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
 };
 
 export default StreetTypeMenu;
+
