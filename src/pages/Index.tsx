@@ -42,7 +42,7 @@ const Index = () => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-2">
             <div className="relative">
-              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl text-gray-900 pointer-events-none font-medium">
+              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl pointer-events-none font-medium text-emerald-500">
                 (57)
               </div>
               <Input
