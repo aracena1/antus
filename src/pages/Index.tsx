@@ -121,7 +121,7 @@ const Index = () => {
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-center mb-16 mt-8">
+                  <div className="text-left mb-16 mt-8">
                     <h1 className="text-4xl font-medium text-black mb-2 leading-tight">
                       Tu nombre completo
                     </h1>
