@@ -62,19 +62,21 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
         </button>
       </DialogTrigger>
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
-        <DialogTitle className="sr-only">Seleccionar Tipo de Vía</DialogTitle>
         <div className="relative min-h-screen">
-          <ScrollArea className="h-[calc(100vh-32px)] px-8 pt-6">
+          <div className="px-8 py-6 border-b">
+            <DialogTitle className="text-2xl font-medium">¿Cómo empieza tu dirección?</DialogTitle>
+          </div>
+          <ScrollArea className="h-[calc(100vh-100px)]">
             <div className="space-y-2">
               <RadioGroup 
                 defaultValue="elige-tipo-de-via"
                 value={selectedStreetType}
                 onValueChange={handleStreetTypeSelect}
               >
-                {streetTypes.map((type) => (
+                {streetTypes.slice(1).map((type) => (
                   <div 
                     key={type} 
-                    className="flex items-center space-x-4 w-full border-b py-4 px-2 hover:bg-gray-50 transition-colors"
+                    className="flex items-center space-x-4 w-full border-b py-4 px-8 hover:bg-gray-50 transition-colors"
                   >
                     <RadioGroupItem 
                       value={type.toLowerCase().replace(/,?\s+/g, '-')} 
