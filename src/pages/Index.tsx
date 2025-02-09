@@ -9,7 +9,6 @@ import StreetDetailsStep from "@/components/form/StreetDetailsStep";
 import QuantityStep from "@/components/form/QuantityStep";
 import PaymentMethodStep from "@/components/form/PaymentMethodStep";
 import TransferPhotoStep from "@/components/form/TransferPhotoStep";
-import ReferralStep from "@/components/form/ReferralStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -69,8 +68,7 @@ const Index = () => {
       complemento: ""
     },
     metodoPago: "",
-    fotoTransferencia: null as File | null,
-    referralSource: ""
+    fotoTransferencia: null as File | null
   });
   const { toast } = useToast();
 
@@ -138,13 +136,6 @@ const Index = () => {
   const handleTransferPhotoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStep(10);
-  };
-
-  const handleReferralSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.referralSource) {
-      setStep(11);
-    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -336,32 +327,16 @@ const Index = () => {
             }`}
           >
             {step === 10 && (
-              <ReferralStep
-                selectedReferral={formData.referralSource}
-                onReferralChange={(value) => setFormData(prev => ({ ...prev, referralSource: value }))}
-                onBack={() => setStep(formData.metodoPago === "transfer" ? 9 : 8)}
-                onSubmit={handleReferralSubmit}
-              />
-            )}
-          </div>
-
-          <div
-            className={`absolute w-full transition-all duration-500 transform ${
-              step === 11 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-            }`}
-          >
-            {step === 11 && (
-              <button
-                onClick={() => {
+              <>
+                <button onClick={() => {
                   toast({
                     title: "¡Registro exitoso!",
                     description: "Te avisaremos cuando tu desodorante esté en camino",
                   });
-                }}
-                className="w-full bg-[#1C999F] text-white py-3 rounded-xl hover:bg-[#1C999F]/90 transition-colors"
-              >
-                Finalizar
-              </button>
+                }}>
+                  Finalizar
+                </button>
+              </>
             )}
           </div>
         </div>
