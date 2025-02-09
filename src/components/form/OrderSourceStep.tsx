@@ -30,14 +30,20 @@ const OrderSourceStep = ({
 
   if (showSuccess) {
     return (
-      <div className="flex flex-col items-center justify-center space-y-6 animate-scale-in">
-        <PartyPopper className="w-20 h-20 text-[#1C999F] animate-bounce" />
-        <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
-          ¡Felicitaciones!
-        </h1>
-        <p className="text-gray-500 text-xl text-center max-w-md">
-          Tu desodorante está agendado. Coméntale a tu asesor en Instagram.
-        </p>
+      <div className="flex flex-col items-center justify-center space-y-6">
+        <div className="relative w-full h-32 flex items-center justify-center">
+          <PartyPopper className="w-20 h-20 text-[#1C999F] animate-bounce absolute" />
+          <PartyPopper className="w-16 h-16 text-[#FF3366] animate-bounce absolute -left-4 top-0 rotate-[-45deg]" />
+          <PartyPopper className="w-16 h-16 text-[#FFD700] animate-bounce absolute -right-4 top-0 rotate-45" />
+        </div>
+        <div className="animate-scale-in">
+          <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
+            ¡Felicitaciones!
+          </h1>
+          <p className="text-gray-500 text-xl text-center max-w-md mt-4">
+            Tu desodorante está agendado. Coméntale a tu asesor en Instagram.
+          </p>
+        </div>
       </div>
     );
   }
@@ -95,4 +101,3 @@ const OrderSourceStep = ({
 };
 
 export default OrderSourceStep;
-
