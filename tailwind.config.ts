@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -70,19 +71,24 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'fall': {
+					'0%': { 
+						transform: 'translateY(-100%) rotate(0deg)',
+						opacity: '0'
 					},
-					to: {
-						height: '0'
+					'50%': {
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(100%) rotate(360deg)',
+						opacity: '0'
 					}
 				}
 			},
@@ -94,3 +100,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
