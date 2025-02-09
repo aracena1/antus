@@ -51,12 +51,12 @@ const Index = () => {
     const { name, value } = e.target;
     
     if (name === 'nombreCompleto') {
-      // Si el último carácter ingresado es un espacio, convertir la última palabra a mayúsculas
+      // Si el último carácter ingresado es un espacio, convertir la primera letra de la última palabra a mayúscula
       if (value.endsWith(' ')) {
         const words = value.split(' ');
         const lastWord = words[words.length - 2]; // La palabra antes del espacio
         if (lastWord) {
-          words[words.length - 2] = lastWord.toUpperCase();
+          words[words.length - 2] = lastWord.charAt(0).toUpperCase() + lastWord.slice(1).toLowerCase();
           const newValue = words.join(' ');
           setFormData(prev => ({
             ...prev,
@@ -149,7 +149,7 @@ const Index = () => {
                   
                   <div className="text-left mb-4 mt-4">
                     <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-                      Tu nombre y apellido
+                      Tu Nombre y Apellido
                     </h1>
                   </div>
                 </div>
