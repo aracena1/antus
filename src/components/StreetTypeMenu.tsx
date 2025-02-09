@@ -34,10 +34,8 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
 
   const handleStreetTypeSelect = (value: string) => {
     const normalizedValue = normalizeValue(value);
-    if (normalizedValue !== "elige-tipo-de-via") {
-      onStreetTypeSelect(normalizedValue);
-      setIsOpen(false);
-    }
+    onStreetTypeSelect(normalizedValue);
+    setIsOpen(false);
   };
 
   const getDisplayStreetType = () => {
@@ -51,6 +49,10 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
   };
 
   const isSelected = selectedStreetType !== "" && selectedStreetType !== "elige-tipo-de-via";
+
+  const getCurrentValue = () => {
+    return streetTypes.find(type => normalizeValue(type) === selectedStreetType) || "";
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -74,9 +76,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
           <ScrollArea className="h-[calc(100vh-100px)]">
             <div className="space-y-2">
               <RadioGroup 
-                value={selectedStreetType ? streetTypes.find(
-                  type => normalizeValue(type) === selectedStreetType
-                ) || "" : ""}
+                value={getCurrentValue()}
                 onValueChange={handleStreetTypeSelect}
               >
                 {streetTypes.slice(1).map((type) => (
