@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -116,18 +115,15 @@ const Index = () => {
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="absolute left-0 -top-6 p-2 text-black/60 hover:text-black transition-colors"
+                    className="absolute left-0 -top-2 p-2 text-black/60 hover:text-black transition-colors"
                   >
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-left mb-16 mt-8">
+                  <div className="text-left mb-8 mt-14">
                     <h1 className="text-4xl font-medium text-black mb-2 leading-tight">
                       Tu nombre completo
                     </h1>
-                    <p className="text-gray-500 text-lg mt-4">
-                      Tal cual como aparece en tu documento de identidad.
-                    </p>
                   </div>
                 </div>
 
