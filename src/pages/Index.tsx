@@ -155,7 +155,7 @@ const Index = () => {
 
                     <div>
                       <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Primer apellido
+                        Apellido
                       </label>
                       <Input
                         type="text"
