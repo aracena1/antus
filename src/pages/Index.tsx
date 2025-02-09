@@ -1,10 +1,10 @@
+
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { ChevronLeft } from "lucide-react";
-import MainMenu from "@/components/MainMenu";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import PhoneStep from "@/components/form/PhoneStep";
+import NameStep from "@/components/form/NameStep";
+import CedulaStep from "@/components/form/CedulaStep";
+import AddressStep from "@/components/form/AddressStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -50,7 +50,6 @@ const departmentCities: { [key: string]: string[] } = {
 const Index = () => {
   const [step, setStep] = useState(1);
   const [phone, setPhone] = useState("");
-  const [isValid, setIsValid] = useState(true);
   const [formData, setFormData] = useState({
     nombreCompleto: "",
     cedula: "",
@@ -67,10 +66,7 @@ const Index = () => {
 
   const handlePhoneSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const isPhoneValid = phone.length === 10;
-    setIsValid(isPhoneValid);
-    
-    if (isPhoneValid) {
+    if (phone.length === 10) {
       setStep(2);
     }
   };
@@ -135,7 +131,7 @@ const Index = () => {
     setFormData(prev => ({
       ...prev,
       departamento: value,
-      ciudad: '' // Reset ciudad when departamento changes
+      ciudad: ''
     }));
   };
 
@@ -152,48 +148,11 @@ const Index = () => {
             }`}
           >
             {step === 1 && (
-              <>
-                <div className="text-center mb-8">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                    Bienvenida
-                  </h1>
-                  <p className="text-gray-600 text-lg">
-                    Necesitamos tu celular para avisarte de la entrega del desodorante.
-                  </p>
-                </div>
-
-                <form onSubmit={handlePhoneSubmit} className="mt-8 space-y-6">
-                  <div className="space-y-2">
-                    <div className="relative">
-                      <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl pointer-events-none font-medium" style={{ color: '#1C999F' }}>
-                        (57)
-                      </div>
-                      <Input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => validatePhone(e.target.value)}
-                        style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
-                        className={`block w-full h-20 font-medium pl-24 pr-10 rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                          phone ? 'text-[#1C999F]' : 'text-gray-900'
-                        }`}
-                        placeholder="319 565 0368"
-                        autoFocus
-                      />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className={`w-full h-14 text-lg ${
-                      phone.length === 10
-                        ? "bg-[#1C999F] hover:bg-[#158589]"
-                        : "bg-gray-300 hover:bg-gray-400"
-                    } text-white rounded-xl transition-all duration-200 ease-in-out`}
-                  >
-                    Continuar
-                  </Button>
-                </form>
-              </>
+              <PhoneStep
+                phone={phone}
+                validatePhone={validatePhone}
+                onSubmit={handlePhoneSubmit}
+              />
             )}
           </div>
 
@@ -203,54 +162,12 @@ const Index = () => {
             }`}
           >
             {step === 2 && (
-              <>
-                <div className="relative w-full">
-                  <button
-                    type="button"
-                    onClick={() => setStep(1)}
-                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
-                  >
-                    <ChevronLeft size={36} strokeWidth={1.5} />
-                  </button>
-                  
-                  <div className="text-left mb-4 mt-4">
-                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-                      Tu Nombre y Apellido
-                    </h1>
-                  </div>
-                </div>
-
-                <form onSubmit={handleNameSubmit} className="space-y-6">
-                  <div className="space-y-4">
-                    <div>
-                      <Input
-                        type="text"
-                        name="nombreCompleto"
-                        value={formData.nombreCompleto}
-                        onChange={handleInputChange}
-                        style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
-                        className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                          formData.nombreCompleto ? 'text-[#1C999F]' : 'text-gray-900'
-                        }`}
-                        placeholder="Nombre y Apellido"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className={`w-full h-14 text-lg ${
-                      isNameComplete
-                        ? "bg-[#1C999F] hover:bg-[#158589]"
-                        : "bg-gray-300 cursor-not-allowed"
-                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-                    disabled={!isNameComplete}
-                  >
-                    Continuar
-                  </Button>
-                </form>
-              </>
+              <NameStep
+                nombreCompleto={formData.nombreCompleto}
+                onBack={() => setStep(1)}
+                onChange={handleInputChange}
+                onSubmit={handleNameSubmit}
+              />
             )}
           </div>
 
@@ -260,54 +177,12 @@ const Index = () => {
             }`}
           >
             {step === 3 && (
-              <>
-                <div className="relative w-full">
-                  <button
-                    type="button"
-                    onClick={() => setStep(2)}
-                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
-                  >
-                    <ChevronLeft size={36} strokeWidth={1.5} />
-                  </button>
-                  
-                  <div className="text-left mb-4 mt-4">
-                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-                      Tu número de cédula
-                    </h1>
-                  </div>
-                </div>
-
-                <form onSubmit={handleCedulaSubmit} className="space-y-6">
-                  <div>
-                    <Input
-                      type="tel"
-                      name="cedula"
-                      value={formData.cedula}
-                      onChange={handleInputChange}
-                      style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
-                      className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
-                        formData.cedula ? 'text-[#1C999F]' : 'text-gray-900'
-                      }`}
-                      placeholder="Escribe tu cédula"
-                      required
-                      inputMode="numeric"
-                      pattern="[0-9]*"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className={`w-full h-14 text-lg ${
-                      isCedulaComplete
-                        ? "bg-[#1C999F] hover:bg-[#158589]"
-                        : "bg-gray-300 cursor-not-allowed"
-                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-                    disabled={!isCedulaComplete}
-                  >
-                    Continuar
-                  </Button>
-                </form>
-              </>
+              <CedulaStep
+                cedula={formData.cedula}
+                onBack={() => setStep(2)}
+                onChange={handleInputChange}
+                onSubmit={handleCedulaSubmit}
+              />
             )}
           </div>
 
@@ -317,86 +192,16 @@ const Index = () => {
             }`}
           >
             {step === 4 && (
-              <>
-                <div className="relative w-full">
-                  <button
-                    type="button"
-                    onClick={() => setStep(3)}
-                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
-                  >
-                    <ChevronLeft size={36} strokeWidth={1.5} />
-                  </button>
-                  
-                  <div className="text-left mb-8 mt-8">
-                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-                      ¿A dónde quieres que llegue tu desodorante?
-                    </h1>
-                  </div>
-                </div>
-
-                <form onSubmit={handleAddressSubmit} className="space-y-6">
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-gray-600 mb-2 text-lg">Departamento</label>
-                      <MainMenu onDepartmentSelect={handleDepartmentChange} />
-                    </div>
-
-                    <div>
-                      <label className="block text-gray-600 mb-2 text-lg">Ciudad o pueblo</label>
-                      <Select
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, ciudad: value }))}
-                        value={formData.ciudad}
-                      >
-                        <SelectTrigger 
-                          className={`w-full h-16 text-xl border-2 rounded-xl ${
-                            isCitySelected ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400 border-gray-200'
-                          }`}
-                        >
-                          <SelectValue placeholder="Elige una ciudad" />
-                        </SelectTrigger>
-                        <SelectContent className="max-h-[400px]">
-                          {availableCities.map((city) => (
-                            <SelectItem 
-                              key={city} 
-                              value={city}
-                              className="text-lg py-3 hover:bg-gray-50 cursor-pointer"
-                            >
-                              {city}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <label className="block text-gray-600 mb-2 text-lg">Barrio</label>
-                      <Input
-                        type="text"
-                        name="barrio"
-                        value={formData.barrio}
-                        onChange={handleInputChange}
-                        className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 ${
-                          formData.barrio ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-900 border-gray-200'
-                        }`}
-                        placeholder="Escribe tu barrio"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className={`w-full h-14 text-lg ${
-                      formData.departamento && formData.ciudad && formData.barrio
-                        ? "bg-[#1C999F] hover:bg-[#158589]"
-                        : "bg-gray-300 cursor-not-allowed"
-                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
-                    disabled={!formData.departamento || !formData.ciudad || !formData.barrio}
-                  >
-                    Continuar
-                  </Button>
-                </form>
-              </>
+              <AddressStep
+                formData={formData}
+                availableCities={availableCities}
+                isCitySelected={isCitySelected}
+                onBack={() => setStep(3)}
+                onDepartmentChange={handleDepartmentChange}
+                onChange={handleInputChange}
+                onCityChange={(value) => setFormData(prev => ({ ...prev, ciudad: value }))}
+                onSubmit={handleAddressSubmit}
+              />
             )}
           </div>
         </div>
@@ -406,3 +211,4 @@ const Index = () => {
 };
 
 export default Index;
+
