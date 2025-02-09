@@ -78,7 +78,7 @@ const Index = () => {
                 : "bg-gray-300 hover:bg-gray-400"
             } text-white rounded-xl transition-all duration-200 ease-in-out`}
           >
-            Enviar
+            Continuar
           </Button>
         </form>
       </div>
