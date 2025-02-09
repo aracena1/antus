@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import PhoneStep from "@/components/form/PhoneStep";
@@ -8,6 +7,7 @@ import AddressStep from "@/components/form/AddressStep";
 import StreetTypeStep from "@/components/form/StreetTypeStep";
 import StreetDetailsStep from "@/components/form/StreetDetailsStep";
 import QuantityStep from "@/components/form/QuantityStep";
+import PaymentMethodStep from "@/components/form/PaymentMethodStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -65,7 +65,8 @@ const Index = () => {
       numero: "",
       segundaParte: "",
       complemento: ""
-    }
+    },
+    metodoPago: ""
   });
   const { toast } = useToast();
 
@@ -117,6 +118,13 @@ const Index = () => {
   const handleQuantitySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStep(8);
+  };
+
+  const handlePaymentMethodSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.metodoPago) {
+      setStep(9);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -280,6 +288,21 @@ const Index = () => {
             }`}
           >
             {step === 8 && (
+              <PaymentMethodStep
+                selectedMethod={formData.metodoPago}
+                onMethodChange={(value) => setFormData(prev => ({ ...prev, metodoPago: value }))}
+                onBack={() => setStep(7)}
+                onSubmit={handlePaymentMethodSubmit}
+              />
+            )}
+          </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 9 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 9 && (
               <>
                 <button onClick={() => {
                   toast({
