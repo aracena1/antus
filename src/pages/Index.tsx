@@ -116,12 +116,12 @@ const Index = () => {
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="absolute left-0 -top-20 p-2 text-black/60 hover:text-black transition-colors"
+                    className="absolute left-0 -top-16 p-2 text-black/60 hover:text-black transition-colors"
                   >
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-left mb-8 mt-8">
+                  <div className="text-left mb-8 mt-4">
                     <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
                       Tu nombre completo
                     </h1>
