@@ -46,7 +46,7 @@ const Index = () => {
                 type="tel"
                 value={`(57) ${phone}`}
                 onChange={(e) => validatePhone(e.target.value.replace("(57) ", ""))}
-                className={`block w-full h-16 text-2xl pl-4 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 ${
+                className={`block w-full h-20 text-3xl pl-6 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 ${
                   phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
                 placeholder="(57) 319 565 0368"
