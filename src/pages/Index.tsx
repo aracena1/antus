@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -315,11 +314,40 @@ const Index = () => {
                         >
                           <SelectValue placeholder="Elige un departamento" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="max-h-[300px]">
+                          <SelectItem value="bogota">Bogotá, D.C.</SelectItem>
                           <SelectItem value="antioquia">Antioquia</SelectItem>
-                          <SelectItem value="cundinamarca">Cundinamarca</SelectItem>
                           <SelectItem value="valle">Valle del Cauca</SelectItem>
-                          {/* Add more departments as needed */}
+                          <SelectItem value="atlantico">Atlántico</SelectItem>
+                          <SelectItem value="cundinamarca">Cundinamarca</SelectItem>
+                          <SelectItem value="amazonas">Amazonas</SelectItem>
+                          <SelectItem value="arauca">Arauca</SelectItem>
+                          <SelectItem value="bolivar">Bolívar</SelectItem>
+                          <SelectItem value="boyaca">Boyacá</SelectItem>
+                          <SelectItem value="caldas">Caldas</SelectItem>
+                          <SelectItem value="caqueta">Caquetá</SelectItem>
+                          <SelectItem value="casanare">Casanare</SelectItem>
+                          <SelectItem value="cauca">Cauca</SelectItem>
+                          <SelectItem value="cesar">Cesar</SelectItem>
+                          <SelectItem value="choco">Chocó</SelectItem>
+                          <SelectItem value="cordoba">Córdoba</SelectItem>
+                          <SelectItem value="guainia">Guainía</SelectItem>
+                          <SelectItem value="guaviare">Guaviare</SelectItem>
+                          <SelectItem value="huila">Huila</SelectItem>
+                          <SelectItem value="guajira">La Guajira</SelectItem>
+                          <SelectItem value="magdalena">Magdalena</SelectItem>
+                          <SelectItem value="meta">Meta</SelectItem>
+                          <SelectItem value="narino">Nariño</SelectItem>
+                          <SelectItem value="norte-santander">Norte de Santander</SelectItem>
+                          <SelectItem value="putumayo">Putumayo</SelectItem>
+                          <SelectItem value="quindio">Quindío</SelectItem>
+                          <SelectItem value="risaralda">Risaralda</SelectItem>
+                          <SelectItem value="san-andres">San Andrés y Providencia</SelectItem>
+                          <SelectItem value="santander">Santander</SelectItem>
+                          <SelectItem value="sucre">Sucre</SelectItem>
+                          <SelectItem value="tolima">Tolima</SelectItem>
+                          <SelectItem value="vaupes">Vaupés</SelectItem>
+                          <SelectItem value="vichada">Vichada</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -341,7 +369,6 @@ const Index = () => {
                           <SelectItem value="medellin">Medellín</SelectItem>
                           <SelectItem value="bogota">Bogotá</SelectItem>
                           <SelectItem value="cali">Cali</SelectItem>
-                          {/* Add more cities as needed */}
                         </SelectContent>
                       </Select>
                     </div>
