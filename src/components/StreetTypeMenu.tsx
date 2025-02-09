@@ -54,7 +54,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
           className={`w-full h-16 text-xl border-2 rounded-xl text-left px-4 flex items-center justify-between ${
             isSelected 
               ? "text-[#1C999F] border-[#1C999F]" 
-              : "text-gray-400 border-gray-200"
+              : "text-[#1C999F] border-[#1C999F]"
           }`}
         >
           <span>{getDisplayStreetType()}</span>
@@ -67,6 +67,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
           <ScrollArea className="h-[calc(100vh-32px)] px-8 pt-6">
             <div className="space-y-2">
               <RadioGroup 
+                defaultValue="elige-tipo-de-via"
                 value={selectedStreetType}
                 onValueChange={handleStreetTypeSelect}
               >
