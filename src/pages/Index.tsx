@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ChevronLeft } from "lucide-react";
+import MainMenu from "@/components/MainMenu";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const departmentCities: { [key: string]: string[] } = {
@@ -344,53 +344,7 @@ const Index = () => {
                   <div className="space-y-6">
                     <div>
                       <label className="block text-gray-600 mb-2 text-lg">Departamento</label>
-                      <Select
-                        onValueChange={(value) => handleSelectChange(value, 'departamento')}
-                        value={formData.departamento}
-                      >
-                        <SelectTrigger 
-                          className={`w-full h-16 text-xl border-2 rounded-xl ${
-                            formData.departamento ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400'
-                          }`}
-                        >
-                          <SelectValue placeholder="Elige un departamento" />
-                        </SelectTrigger>
-                        <SelectContent className="max-h-[400px] w-[400px] p-2">
-                          <SelectItem value="antioquia">Antioquia</SelectItem>
-                          <SelectItem value="bogota">Bogotá, D.C.</SelectItem>
-                          <SelectItem value="valle">Valle del Cauca</SelectItem>
-                          <SelectItem value="atlantico">Atlántico</SelectItem>
-                          <SelectItem value="cundinamarca">Cundinamarca</SelectItem>
-                          <SelectItem value="santander">Santander</SelectItem>
-                          <SelectItem value="bolivar">Bolívar</SelectItem>
-                          <SelectItem value="risaralda">Risaralda</SelectItem>
-                          <SelectItem value="caldas">Caldas</SelectItem>
-                          <SelectItem value="tolima">Tolima</SelectItem>
-                          <SelectItem value="norte-santander">Norte de Santander</SelectItem>
-                          <SelectItem value="magdalena">Magdalena</SelectItem>
-                          <SelectItem value="huila">Huila</SelectItem>
-                          <SelectItem value="boyaca">Boyacá</SelectItem>
-                          <SelectItem value="cesar">Cesar</SelectItem>
-                          <SelectItem value="cauca">Cauca</SelectItem>
-                          <SelectItem value="meta">Meta</SelectItem>
-                          <SelectItem value="narino">Nariño</SelectItem>
-                          <SelectItem value="cordoba">Córdoba</SelectItem>
-                          <SelectItem value="quindio">Quindío</SelectItem>
-                          <SelectItem value="sucre">Sucre</SelectItem>
-                          <SelectItem value="amazonas">Amazonas</SelectItem>
-                          <SelectItem value="arauca">Arauca</SelectItem>
-                          <SelectItem value="caqueta">Caquetá</SelectItem>
-                          <SelectItem value="casanare">Casanare</SelectItem>
-                          <SelectItem value="choco">Chocó</SelectItem>
-                          <SelectItem value="guainia">Guainía</SelectItem>
-                          <SelectItem value="guaviare">Guaviare</SelectItem>
-                          <SelectItem value="guajira">La Guajira</SelectItem>
-                          <SelectItem value="putumayo">Putumayo</SelectItem>
-                          <SelectItem value="san-andres">San Andrés y Providencia</SelectItem>
-                          <SelectItem value="vaupes">Vaupés</SelectItem>
-                          <SelectItem value="vichada">Vichada</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <MainMenu />
                     </div>
 
                     <div>
@@ -454,4 +408,3 @@ const Index = () => {
 };
 
 export default Index;
-
