@@ -9,6 +9,7 @@ import StreetDetailsStep from "@/components/form/StreetDetailsStep";
 import QuantityStep from "@/components/form/QuantityStep";
 import PaymentMethodStep from "@/components/form/PaymentMethodStep";
 import TransferPhotoStep from "@/components/form/TransferPhotoStep";
+import OrderSourceStep from "@/components/form/OrderSourceStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -68,7 +69,8 @@ const Index = () => {
       complemento: ""
     },
     metodoPago: "",
-    fotoTransferencia: null as File | null
+    fotoTransferencia: null as File | null,
+    fuenteOrden: ""
   });
   const { toast } = useToast();
 
@@ -136,6 +138,16 @@ const Index = () => {
   const handleTransferPhotoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStep(10);
+  };
+
+  const handleOrderSourceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.fuenteOrden) {
+      toast({
+        title: "¡Registro exitoso!",
+        description: "Te avisaremos cuando tu desodorante esté en camino",
+      });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -327,16 +339,12 @@ const Index = () => {
             }`}
           >
             {step === 10 && (
-              <>
-                <button onClick={() => {
-                  toast({
-                    title: "¡Registro exitoso!",
-                    description: "Te avisaremos cuando tu desodorante esté en camino",
-                  });
-                }}>
-                  Finalizar
-                </button>
-              </>
+              <OrderSourceStep
+                selectedSource={formData.fuenteOrden}
+                onSourceChange={(value) => setFormData(prev => ({ ...prev, fuenteOrden: value }))}
+                onBack={() => setStep(formData.metodoPago === "transfer" ? 9 : 8)}
+                onSubmit={handleOrderSourceSubmit}
+              />
             )}
           </div>
         </div>
