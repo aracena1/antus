@@ -78,8 +78,8 @@ const Index = () => {
             type="submit"
             className={`w-full h-14 text-lg ${
               phone.length === 10
-                ? "bg-[#73B673] hover:bg-[#5A9C5A]"
-                : "bg-[#89D185] hover:bg-[#73B673]"
+                ? "bg-emerald-500 hover:bg-emerald-600"
+                : "bg-gray-300 hover:bg-gray-400"
             } text-white rounded-xl transition-all duration-200 ease-in-out`}
           >
             Enviar
