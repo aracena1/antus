@@ -20,8 +20,21 @@ const PaymentMethodStep = ({
     onMethodChange(value);
     const syntheticEvent = {
       preventDefault: () => {},
-      target: document.createElement('form')
+      target: document.createElement('form'),
+      currentTarget: document.createElement('form'),
+      nativeEvent: new Event('submit'),
+      bubbles: true,
+      cancelable: true,
+      defaultPrevented: false,
+      isDefaultPrevented: () => false,
+      isPropagationStopped: () => false,
+      isTrusted: true,
+      stopPropagation: () => {},
+      persist: () => {},
+      timeStamp: Date.now(),
+      type: 'submit'
     } as React.FormEvent<HTMLFormElement>;
+    
     onSubmit(syntheticEvent);
   };
 
