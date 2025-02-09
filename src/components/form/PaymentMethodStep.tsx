@@ -18,12 +18,6 @@ const PaymentMethodStep = ({
 }: PaymentMethodStepProps) => {
   const handleMethodChange = (value: string) => {
     onMethodChange(value);
-    if (value === "transfer") {
-      const form = document.createElement('form');
-      const event = new Event('submit', { bubbles: true, cancelable: true }) as unknown as React.FormEvent<HTMLFormElement>;
-      Object.defineProperty(event, 'target', { value: form });
-      onSubmit(event);
-    }
   };
 
   return (
@@ -78,7 +72,7 @@ const PaymentMethodStep = ({
           </label>
         </RadioGroup>
 
-        {selectedMethod === "cash" && (
+        {selectedMethod && (
           <button
             type="submit"
             disabled={!selectedMethod}
