@@ -55,7 +55,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-md space-y-8">
+      <div className="w-full max-w-md">
         <div className="relative w-full">
           <div
             className={`absolute w-full transition-all duration-500 transform ${
@@ -64,7 +64,7 @@ const Index = () => {
           >
             {step === 1 && (
               <>
-                <div className="text-center">
+                <div className="text-center mb-8">
                   <h1 className="text-4xl font-bold text-gray-900 mb-2">
                     Bienvenida
                   </h1>
@@ -120,13 +120,13 @@ const Index = () => {
           </div>
 
           <div
-            className={`w-full transition-all duration-500 transform ${
+            className={`absolute w-full transition-all duration-500 transform ${
               step === 2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             }`}
           >
             {step === 2 && (
               <>
-                <div className="text-center">
+                <div className="text-center mb-8">
                   <h1 className="text-4xl font-bold text-gray-900 mb-2">
                     Tu nombre completo
                   </h1>
