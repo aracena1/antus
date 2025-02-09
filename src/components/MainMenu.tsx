@@ -53,10 +53,18 @@ const MainMenu = () => {
     return dept || "Elige un departamento";
   };
 
+  const isSelected = selectedDepartment !== "elige-un-departamento";
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <button className="w-full h-16 text-xl border-2 rounded-xl text-gray-400 text-left px-4 flex items-center justify-between">
+        <button 
+          className={`w-full h-16 text-xl border-2 rounded-xl text-left px-4 flex items-center justify-between ${
+            isSelected 
+              ? "text-[#1C999F] border-[#1C999F]" 
+              : "text-gray-400 border-gray-200"
+          }`}
+        >
           <span>{getDisplayDepartment()}</span>
           <ChevronRight className="h-6 w-6" />
         </button>
@@ -116,3 +124,4 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
+
