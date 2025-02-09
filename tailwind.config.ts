@@ -84,11 +84,11 @@ export default {
             opacity: "0"
           },
           "50%": {
-            transform: "translateY(-50vh) rotate(90deg)",
+            transform: "translateY(-80vh) rotate(180deg)",
             opacity: "1"
           },
           "100%": {
-            transform: "translateY(-100vh) rotate(180deg)",
+            transform: "translateY(-100vh) rotate(360deg)",
             opacity: "0"
           }
         }
@@ -96,9 +96,12 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "confetti-slow": "confetti 3s ease-out forwards",
-        "confetti-medium": "confetti 2.5s ease-out forwards",
-        "confetti-fast": "confetti 2s ease-out forwards"
+        "confetti-slow": "confetti 4s ease-out forwards",
+        "confetti-medium": "confetti 3.5s ease-out forwards",
+        "confetti-fast": "confetti 3s ease-out forwards",
+        "confetti-slow-2": "confetti 4s ease-out 0.5s forwards",
+        "confetti-medium-2": "confetti 3.5s ease-out 0.5s forwards",
+        "confetti-fast-2": "confetti 3s ease-out 0.5s forwards"
       },
     },
   },
