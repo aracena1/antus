@@ -27,19 +27,14 @@ const Index = () => {
     }
   };
 
-  const formatPhone = (value: string) => {
-    if (!value) return "(57) 3195650368";
-    return `(57) ${value}`;
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
             Bienvenida, necesitamos tu celular
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-lg">
             Lo necesitamos para avisarte de la entrega de tu tarjeta.
           </p>
         </div>
@@ -49,12 +44,12 @@ const Index = () => {
             <div className="relative">
               <Input
                 type="tel"
-                value={formatPhone(phone)}
+                value={phone ? `(57) ${phone}` : ""}
                 onChange={(e) => validatePhone(e.target.value.slice(5))}
-                className={`block w-full h-14 text-lg pl-4 pr-10 rounded-xl border-gray-200 focus:border-purple-500 focus:ring-purple-500 transition-all ${
-                  phone ? 'text-emerald-500' : 'text-gray-400'
+                className={`block w-full h-16 text-2xl pl-4 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all ${
+                  phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
-                placeholder="(57) Ingresa tu número"
+                placeholder="(57) 3195650368"
               />
               {phone && !isValid && (
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
