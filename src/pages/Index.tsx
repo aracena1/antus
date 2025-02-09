@@ -10,7 +10,6 @@ const Index = () => {
   const { toast } = useToast();
 
   const validatePhone = (value: string) => {
-    // Permite solo números y limita a 10 dígitos después del código de país
     const cleanedValue = value.replace(/\D/g, "").slice(0, 10);
     setPhone(cleanedValue);
     setIsValid(cleanedValue.length === 10);
@@ -36,11 +35,8 @@ const Index = () => {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-semibold text-gray-900 mb-2">
-            Por último, tu celular
+            Tu celular
           </h1>
-          <p className="text-gray-600">
-            Lo necesitamos para avisarte de la entrega de tu tarjeta.
-          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -63,11 +59,6 @@ const Index = () => {
             {phone && !isValid && (
               <p className="text-red-500 text-sm mt-1">
                 Por favor ingresa un número válido de 10 dígitos
-              </p>
-            )}
-            {!phone && (
-              <p className="text-gray-400 text-sm mt-1">
-                ¿Ese sí es tu celular? revísalo para seguir
               </p>
             )}
           </div>
