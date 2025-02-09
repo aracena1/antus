@@ -1,6 +1,6 @@
+
 import React, { useState } from "react";
-import { ChevronLeft, ArrowRight, Sparkles } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ChevronLeft, ArrowRight, Square, Triangle, Circle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface OrderSourceStepProps {
@@ -30,16 +30,20 @@ const OrderSourceStep = ({
   if (showSuccess) {
     return (
       <div className="flex flex-col items-center justify-center space-y-6">
-        <div className="relative w-full h-48 flex items-center justify-center">
-          <Sparkles className="w-24 h-24 text-[#FFD700] animate-[firework_2s_ease-out_infinite] absolute left-1/4" />
-          <Sparkles className="w-20 h-20 text-[#FFD700] animate-[firework_2s_ease-out_0.3s_infinite] absolute left-1/4 top-1/4" />
-          <Sparkles className="w-16 h-16 text-[#FFD700] animate-[firework_2s_ease-out_0.6s_infinite] absolute left-1/4 top-1/3" />
-          <Sparkles className="w-28 h-28 text-[#FF3366] animate-[firework_2.2s_ease-out_0.2s_infinite] absolute" />
-          <Sparkles className="w-24 h-24 text-[#FF3366] animate-[firework_2.2s_ease-out_0.5s_infinite] absolute top-1/4" />
-          <Sparkles className="w-20 h-20 text-[#FF3366] animate-[firework_2.2s_ease-out_0.8s_infinite] absolute top-1/3" />
-          <Sparkles className="w-24 h-24 text-[#1C999F] animate-[firework_1.8s_ease-out_0.4s_infinite] absolute right-1/4" />
-          <Sparkles className="w-20 h-20 text-[#1C999F] animate-[firework_1.8s_ease-out_0.7s_infinite] absolute right-1/4 top-1/4" />
-          <Sparkles className="w-16 h-16 text-[#1C999F] animate-[firework_1.8s_ease-out_1s_infinite] absolute right-1/4 top-1/3" />
+        <div className="relative w-full h-48 flex items-center justify-center overflow-hidden">
+          {/* Green confetti */}
+          <Square className="w-4 h-4 text-[#1C999F] animate-confetti-slow absolute left-1/4 top-full" />
+          <Triangle className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium absolute left-1/3 top-full" />
+          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-fast absolute left-2/5 top-full" />
+          <Square className="w-3 h-3 text-[#F2FCE2] animate-confetti-slow absolute left-1/2 top-full" />
+          <Triangle className="w-4 h-4 text-[#1C999F] animate-confetti-medium absolute left-3/5 top-full" />
+          
+          {/* Orange confetti */}
+          <Square className="w-4 h-4 text-[#F97316] animate-confetti-fast absolute right-1/4 top-full" />
+          <Circle className="w-3 h-3 text-[#FEF7CD] animate-confetti-slow absolute right-1/3 top-full" />
+          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-medium absolute right-2/5 top-full" />
+          <Square className="w-3 h-3 text-[#FEF7CD] animate-confetti-fast absolute right-1/2 top-full" />
+          <Circle className="w-4 h-4 text-[#F97316] animate-confetti-slow absolute right-3/5 top-full" />
         </div>
         <div className="animate-scale-in">
           <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">

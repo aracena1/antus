@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -77,28 +78,27 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "firework": {
+        "confetti": {
           "0%": { 
-            transform: "translateY(100%) scale(0.5)",
+            transform: "translateY(0) rotate(0deg)",
             opacity: "0"
           },
           "50%": {
-            transform: "translateY(0) scale(1)",
+            transform: "translateY(-50vh) rotate(90deg)",
             opacity: "1"
           },
-          "75%": {
-            transform: "translateY(0) scale(1.2)",
-            opacity: "0.5"
-          },
           "100%": {
-            transform: "translateY(0) scale(1.5)",
+            transform: "translateY(-100vh) rotate(180deg)",
             opacity: "0"
           }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out"
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "confetti-slow": "confetti 3s ease-out forwards",
+        "confetti-medium": "confetti 2.5s ease-out forwards",
+        "confetti-fast": "confetti 2s ease-out forwards"
       },
     },
   },
