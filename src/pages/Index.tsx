@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { ArrowLeft } from "lucide-react";
 
 const Index = () => {
   const [step, setStep] = useState(1);
@@ -121,10 +123,22 @@ const Index = () => {
           >
             {step === 2 && (
               <>
-                <div className="text-center mb-8">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                    Tu nombre completo
-                  </h1>
+                <div className="relative w-full">
+                  <Button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    variant="ghost"
+                    size="icon"
+                    className="absolute left-0 -top-2 text-gray-600 hover:text-gray-900"
+                  >
+                    <ArrowLeft size={24} />
+                  </Button>
+                  
+                  <div className="text-center mb-8">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                      Tu nombre completo
+                    </h1>
+                  </div>
                 </div>
 
                 <form onSubmit={handleNameSubmit} className="space-y-6">
