@@ -18,7 +18,7 @@ const OrderSourceStep = ({
   onSubmit,
 }: OrderSourceStepProps) => {
   const [instagram, setInstagram] = useState("");
-  const [showSuccess, setShowSuccess] = useState(true); // Cambiado a true para mostrar la pantalla de éxito primero
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,4 +101,3 @@ const OrderSourceStep = ({
 };
 
 export default OrderSourceStep;
-
