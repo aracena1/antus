@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -203,12 +202,12 @@ const Index = () => {
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
+                    className="absolute -left-4 -top-8 p-2 text-black/60 hover:text-black transition-colors"
                   >
                     <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-left mb-4 mt-4">
+                  <div className="text-left mb-4">
                     <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
                       Tu número de cédula
                     </h1>
@@ -256,4 +255,3 @@ const Index = () => {
 };
 
 export default Index;
-
