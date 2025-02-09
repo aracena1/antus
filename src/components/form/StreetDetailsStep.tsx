@@ -31,7 +31,7 @@ const StreetDetailsStep = ({
             ¿Y en qué parte de Medellín?
           </h1>
           <p className="text-xl text-gray-500">
-            Danos la dirección completa para que la tarjeta sí llegue
+            Danos la dirección completa para que el desodorante sí llegue
           </p>
         </div>
       </div>
