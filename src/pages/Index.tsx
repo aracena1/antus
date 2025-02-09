@@ -12,6 +12,7 @@ const Index = () => {
   const [formData, setFormData] = useState({
     nombres: "",
     primerApellido: "",
+    cedula: "",
   });
   const { toast } = useToast();
 
@@ -33,6 +34,13 @@ const Index = () => {
   const handleNameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.nombres && formData.primerApellido) {
+      setStep(3);
+    }
+  };
+
+  const handleCedulaSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.cedula) {
       toast({
         title: "Datos registrados",
         description: "Gracias por completar el formulario",
@@ -49,6 +57,7 @@ const Index = () => {
   };
 
   const isNameFormComplete = formData.nombres && formData.primerApellido;
+  const isCedulaComplete = formData.cedula.length > 0;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -182,6 +191,64 @@ const Index = () => {
               </>
             )}
           </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 3 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 3 && (
+              <>
+                <div className="relative w-full">
+                  <button
+                    type="button"
+                    onClick={() => setStep(2)}
+                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
+                  >
+                    <ChevronLeft size={36} strokeWidth={1.5} />
+                  </button>
+                  
+                  <div className="text-left mb-4 mt-4">
+                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
+                      Tu número de cédula
+                    </h1>
+                  </div>
+                </div>
+
+                <form onSubmit={handleCedulaSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-xl font-medium text-gray-900 mb-2">
+                      Número de cédula
+                    </label>
+                    <Input
+                      type="text"
+                      name="cedula"
+                      value={formData.cedula}
+                      onChange={handleInputChange}
+                      style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
+                      className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
+                        formData.cedula ? 'text-[#1C999F]' : 'text-gray-900'
+                      }`}
+                      placeholder="Escribe tu cédula"
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className={`w-full h-14 text-lg ${
+                      isCedulaComplete
+                        ? "bg-[#1C999F] hover:bg-[#158589]"
+                        : "bg-gray-300 cursor-not-allowed"
+                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
+                    disabled={!isCedulaComplete}
+                  >
+                    Continuar
+                  </Button>
+                </form>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -189,3 +256,4 @@ const Index = () => {
 };
 
 export default Index;
+
