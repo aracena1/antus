@@ -48,8 +48,8 @@ const StreetDetailsStep = ({
           <ChevronLeft size={36} strokeWidth={1.5} />
         </button>
 
-        <div className="text-left mb-6">
-          <h1 className="text-3xl font-medium text-black leading-tight">
+        <div className="text-left">
+          <h1 className="text-[48px] leading-[1.15] font-normal text-black mb-14">
             ¿Y en qué parte de Medellín?
           </h1>
         </div>
@@ -162,3 +162,4 @@ const StreetDetailsStep = ({
 };
 
 export default StreetDetailsStep;
+
