@@ -33,7 +33,7 @@ const CityMenu = ({ onCitySelect, availableCities, selectedCity }: CityMenuProps
   };
 
   const getDisplayCity = () => {
-    return selectedCity || "Elige tu ciudad";
+    return selectedCity || "Elige ciudad";
   };
 
   const isSelected = selectedCity !== "";
