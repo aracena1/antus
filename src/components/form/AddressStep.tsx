@@ -4,13 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import MainMenu from "@/components/MainMenu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import CityMenu from "@/components/CityMenu";
 
 interface AddressStepProps {
   formData: {
@@ -68,31 +62,11 @@ const AddressStep = ({
             <label className="block text-gray-600 mb-2 text-lg">
               Ciudad o pueblo
             </label>
-            <Select
-              onValueChange={onCityChange}
-              value={formData.ciudad}
-            >
-              <SelectTrigger
-                className={`w-full h-16 text-xl border-2 rounded-xl ${
-                  isCitySelected
-                    ? "text-[#1C999F] border-[#1C999F]"
-                    : "text-gray-400 border-gray-200"
-                }`}
-              >
-                <SelectValue placeholder="Elige una ciudad" />
-              </SelectTrigger>
-              <SelectContent className="max-h-[400px]">
-                {availableCities.map((city) => (
-                  <SelectItem
-                    key={city}
-                    value={city}
-                    className="text-lg py-3 hover:bg-gray-50 cursor-pointer"
-                  >
-                    {city}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <CityMenu 
+              onCitySelect={onCityChange}
+              availableCities={availableCities}
+              selectedCity={formData.ciudad}
+            />
           </div>
 
           <div>
@@ -102,7 +76,7 @@ const AddressStep = ({
               name="barrio"
               value={formData.barrio}
               onChange={onChange}
-              className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 ${
+              className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
                 formData.barrio
                   ? "text-[#1C999F] border-[#1C999F]"
                   : "text-gray-900 border-gray-200"
@@ -130,4 +104,3 @@ const AddressStep = ({
 };
 
 export default AddressStep;
-
