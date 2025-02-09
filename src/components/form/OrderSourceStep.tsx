@@ -21,10 +21,8 @@ const OrderSourceStep = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (instagram.trim()) {
-      setShowSuccess(true);
-      onSubmit(e);
-    }
+    setShowSuccess(true);
+    onSubmit(e);
   };
 
   if (showSuccess) {
@@ -32,43 +30,43 @@ const OrderSourceStep = ({
       <div className="fixed inset-0 flex items-center justify-center">
         <div className="fixed inset-0 pointer-events-none">
           {/* Left side confetti */}
-          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow absolute left-[5%] -top-10" />
-          <Triangle className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium absolute left-[15%] -top-10" />
-          <Circle className="w-2 h-2 text-[#1C999F] animate-confetti-fast absolute left-[25%] -top-10" />
-          <Star className="w-5 h-5 text-[#F2FCE2] animate-confetti-slow absolute left-[35%] -top-10" />
-          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-medium absolute left-[45%] -top-10" />
+          <Square className="w-3 h-3 text-[#8B5CF6] animate-confetti-slow absolute left-[5%] -top-10" />
+          <Triangle className="w-4 h-4 text-[#D946EF] animate-confetti-medium absolute left-[15%] -top-10" />
+          <Circle className="w-2 h-2 text-[#F97316] animate-confetti-fast absolute left-[25%] -top-10" />
+          <Star className="w-5 h-5 text-[#0EA5E9] animate-confetti-slow absolute left-[35%] -top-10" />
+          <Square className="w-3 h-3 text-[#ea384c] animate-confetti-medium absolute left-[45%] -top-10" />
           
           {/* Right side confetti */}
-          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-fast absolute right-[5%] -top-10" />
-          <Circle className="w-3 h-3 text-[#FEF7CD] animate-confetti-slow absolute right-[15%] -top-10" />
+          <Triangle className="w-4 h-4 text-[#8B5CF6] animate-confetti-fast absolute right-[5%] -top-10" />
+          <Circle className="w-3 h-3 text-[#D946EF] animate-confetti-slow absolute right-[15%] -top-10" />
           <Square className="w-5 h-5 text-[#F97316] animate-confetti-medium absolute right-[25%] -top-10" />
-          <Star className="w-2 h-2 text-[#FEF7CD] animate-confetti-fast absolute right-[35%] -top-10" />
-          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-slow absolute right-[45%] -top-10" />
+          <Star className="w-2 h-2 text-[#0EA5E9] animate-confetti-fast absolute right-[35%] -top-10" />
+          <Triangle className="w-4 h-4 text-[#ea384c] animate-confetti-slow absolute right-[45%] -top-10" />
 
           {/* Second wave */}
-          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-slow-2 absolute left-[10%] -top-10" />
-          <Square className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium-2 absolute left-[20%] -top-10" />
+          <Circle className="w-3 h-3 text-[#8B5CF6] animate-confetti-slow-2 absolute left-[10%] -top-10" />
+          <Square className="w-4 h-4 text-[#D946EF] animate-confetti-medium-2 absolute left-[20%] -top-10" />
           <Triangle className="w-2 h-2 text-[#F97316] animate-confetti-fast-2 absolute left-[30%] -top-10" />
-          <Star className="w-5 h-5 text-[#FEF7CD] animate-confetti-slow-2 absolute left-[40%] -top-10" />
-          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-medium-2 absolute right-[10%] -top-10" />
+          <Star className="w-5 h-5 text-[#0EA5E9] animate-confetti-slow-2 absolute left-[40%] -top-10" />
+          <Circle className="w-3 h-3 text-[#8B5CF6] animate-confetti-medium-2 absolute right-[10%] -top-10" />
           <Square className="w-4 h-4 text-[#F97316] animate-confetti-fast-2 absolute right-[20%] -top-10" />
-          <Triangle className="w-2 h-2 text-[#FEF7CD] animate-confetti-slow-2 absolute right-[30%] -top-10" />
-          <Star className="w-5 h-5 text-[#1C999F] animate-confetti-medium-2 absolute right-[40%] -top-10" />
+          <Triangle className="w-2 h-2 text-[#D946EF] animate-confetti-slow-2 absolute right-[30%] -top-10" />
+          <Star className="w-5 h-5 text-[#ea384c] animate-confetti-medium-2 absolute right-[40%] -top-10" />
 
           {/* Third wave */}
-          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow-3 absolute left-[7%] -top-10" />
-          <Triangle className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium-3 absolute left-[17%] -top-10" />
+          <Square className="w-3 h-3 text-[#8B5CF6] animate-confetti-slow-3 absolute left-[7%] -top-10" />
+          <Triangle className="w-4 h-4 text-[#D946EF] animate-confetti-medium-3 absolute left-[17%] -top-10" />
           <Circle className="w-2 h-2 text-[#F97316] animate-confetti-fast-3 absolute left-[27%] -top-10" />
-          <Star className="w-5 h-5 text-[#FEF7CD] animate-confetti-slow-3 absolute left-[37%] -top-10" />
-          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-medium-3 absolute right-[7%] -top-10" />
+          <Star className="w-5 h-5 text-[#0EA5E9] animate-confetti-slow-3 absolute left-[37%] -top-10" />
+          <Square className="w-3 h-3 text-[#8B5CF6] animate-confetti-medium-3 absolute right-[7%] -top-10" />
           <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-fast-3 absolute right-[17%] -top-10" />
-          <Circle className="w-2 h-2 text-[#FEF7CD] animate-confetti-slow-3 absolute right-[27%] -top-10" />
-          <Star className="w-5 h-5 text-[#1C999F] animate-confetti-medium-3 absolute right-[37%] -top-10" />
+          <Circle className="w-2 h-2 text-[#D946EF] animate-confetti-slow-3 absolute right-[27%] -top-10" />
+          <Star className="w-5 h-5 text-[#ea384c] animate-confetti-medium-3 absolute right-[37%] -top-10" />
 
           {/* Center confetti */}
-          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow absolute left-[50%] -top-10" />
+          <Square className="w-3 h-3 text-[#8B5CF6] animate-confetti-slow absolute left-[50%] -top-10" />
           <Circle className="w-4 h-4 text-[#F97316] animate-confetti-medium-2 absolute left-[55%] -top-10" />
-          <Triangle className="w-2 h-2 text-[#FEF7CD] animate-confetti-fast-3 absolute left-[60%] -top-10" />
+          <Triangle className="w-2 h-2 text-[#D946EF] animate-confetti-fast-3 absolute left-[60%] -top-10" />
         </div>
         <div className="animate-scale-in relative z-10">
           <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
@@ -98,7 +96,6 @@ const OrderSourceStep = ({
             <h1 className="text-[40px] leading-[1.15] font-normal text-black mb-8">
               Cómo te encontramos en instagram?
             </h1>
-            <span className="text-[#FF3366] text-2xl">*</span>
           </div>
           <p className="text-gray-500 text-lg mb-8">
             (Si no logramos comunicarnos contigo vía celular, te escribiremos por este medio)
@@ -119,13 +116,7 @@ const OrderSourceStep = ({
 
         <button
           type="submit"
-          disabled={!instagram.trim()}
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto
-            ${
-              instagram.trim()
-                ? "bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
+          className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
         >
           <ArrowRight className="w-6 h-6" />
         </button>
