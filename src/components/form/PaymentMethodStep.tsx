@@ -19,11 +19,10 @@ const PaymentMethodStep = ({
   const handleMethodChange = (value: string) => {
     onMethodChange(value);
     if (value === "transfer") {
-      const syntheticEvent = {
-        preventDefault: () => {},
-        target: document.createElement('form')
-      } as React.FormEvent<HTMLFormElement>;
-      onSubmit(syntheticEvent);
+      const form = document.createElement('form');
+      const event = new Event('submit', { bubbles: true, cancelable: true }) as unknown as React.FormEvent<HTMLFormElement>;
+      Object.defineProperty(event, 'target', { value: form });
+      onSubmit(event);
     }
   };
 
@@ -97,4 +96,3 @@ const PaymentMethodStep = ({
 };
 
 export default PaymentMethodStep;
-
