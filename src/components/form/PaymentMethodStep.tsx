@@ -18,9 +18,13 @@ const PaymentMethodStep = ({
 }: PaymentMethodStepProps) => {
   const handleMethodChange = (value: string) => {
     onMethodChange(value);
-    // Automáticamente enviar el formulario cuando se selecciona una opción
-    const event = new Event('submit') as React.FormEvent;
-    onSubmit(event);
+    // Create a synthetic React form event instead of a native Event
+    const syntheticEvent = {
+      preventDefault: () => {},
+      target: document.createElement('form'),
+    } as React.FormEvent<HTMLFormElement>;
+    
+    onSubmit(syntheticEvent);
   };
 
   return (
