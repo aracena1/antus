@@ -15,6 +15,9 @@ import { Input } from "@/components/ui/input";
 
 const MainMenu = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("elige-un-departamento");
+  const [isOpen, setIsOpen] = useState(false);
+  
   const departments = [
     "Elige un departamento",
     "Antioquia",
@@ -33,11 +36,28 @@ const MainMenu = () => {
     dept.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleDepartmentSelect = (value: string) => {
+    const selectedDept = departments.find(
+      dept => dept.toLowerCase().replace(/,?\s+/g, '-') === value
+    );
+    if (selectedDept) {
+      setSelectedDepartment(value);
+      setIsOpen(false); // Close the dialog
+    }
+  };
+
+  const getDisplayDepartment = () => {
+    const dept = departments.find(
+      dept => dept.toLowerCase().replace(/,?\s+/g, '-') === selectedDepartment
+    );
+    return dept || "Elige un departamento";
+  };
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <button className="w-full h-16 text-xl border-2 rounded-xl text-gray-400 text-left px-4 flex items-center justify-between">
-          <span>Elige un departamento</span>
+          <span>{getDisplayDepartment()}</span>
           <ChevronRight className="h-6 w-6" />
         </button>
       </DialogTrigger>
@@ -64,7 +84,10 @@ const MainMenu = () => {
           </div>
           <ScrollArea className="h-[calc(100vh-100px)] px-8">
             <div className="space-y-2 mt-4">
-              <RadioGroup defaultValue="elige">
+              <RadioGroup 
+                value={selectedDepartment}
+                onValueChange={handleDepartmentSelect}
+              >
                 {filteredDepartments.map((department) => (
                   <div 
                     key={department} 
@@ -93,4 +116,3 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
-
