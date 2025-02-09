@@ -1,8 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ChevronDown } from "lucide-react";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface StreetDetailsStepProps {
   onBack: () => void;
@@ -15,6 +21,15 @@ const StreetDetailsStep = ({
   onSubmit,
   selectedStreetType,
 }: StreetDetailsStepProps) => {
+  const [streetNumber, setStreetNumber] = useState("");
+  const streetTypes = ["Calle", "Carrera", "Circunvalar", "Diagonal", "Transversal"];
+
+  const getDisplayStreetType = () => {
+    return streetTypes.find(
+      type => type.toLowerCase() === selectedStreetType
+    ) || selectedStreetType;
+  };
+
   return (
     <>
       <div className="relative w-full">
@@ -42,15 +57,37 @@ const StreetDetailsStep = ({
             <label className="block text-[#666666]/80 text-lg mb-2">
               Tipo de vía
             </label>
-            <div className="relative">
-              <label className="absolute -top-3 left-3 text-sm bg-white px-1 text-[#666666]/60">
-                {selectedStreetType}
-              </label>
-              <Input
-                type="text"
-                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
-                placeholder="30A"
-              />
+            <div className="flex items-center gap-4">
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex-1 h-14 px-4 text-xl text-left border rounded-xl hover:border-[#9b87f5] transition-colors">
+                  <div className="flex items-center justify-between">
+                    <span>{getDisplayStreetType()}</span>
+                    <ChevronDown className="ml-2 h-5 w-5" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-[200px]">
+                  {streetTypes.map((type) => (
+                    <DropdownMenuItem 
+                      key={type}
+                      className="text-lg py-3 cursor-pointer"
+                    >
+                      {type}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <div className="w-px h-8 bg-[#9b87f5]" />
+
+              <div className="flex-1">
+                <Input
+                  type="text"
+                  value={streetNumber}
+                  onChange={(e) => setStreetNumber(e.target.value)}
+                  className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
+                  placeholder="30A"
+                />
+              </div>
             </div>
           </div>
 
@@ -98,4 +135,3 @@ const StreetDetailsStep = ({
 };
 
 export default StreetDetailsStep;
-
