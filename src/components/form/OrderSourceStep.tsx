@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import { ChevronLeft, ArrowRight, PartyPopper } from "lucide-react";
+import { ChevronLeft, ArrowRight, Sparkles } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 
@@ -32,20 +31,15 @@ const OrderSourceStep = ({
     return (
       <div className="flex flex-col items-center justify-center space-y-6">
         <div className="relative w-full h-48 flex items-center justify-center">
-          {/* Top row confetti */}
-          <PartyPopper className="w-24 h-24 text-[#1C999F] animate-[fall_2s_ease-in-out_infinite] absolute -top-8" />
-          <PartyPopper className="w-20 h-20 text-[#FF3366] animate-[fall_1.8s_ease-in-out_infinite] absolute -top-4 left-1/4" />
-          <PartyPopper className="w-20 h-20 text-[#FFD700] animate-[fall_2.2s_ease-in-out_infinite] absolute -top-12 right-1/4" />
-          
-          {/* Middle row confetti */}
-          <PartyPopper className="w-16 h-16 text-[#1C999F] animate-[fall_1.5s_ease-in-out_infinite] absolute top-1/4 -left-4" />
-          <PartyPopper className="w-24 h-24 text-[#FF3366] animate-[fall_2.5s_ease-in-out_infinite] absolute top-1/3" />
-          <PartyPopper className="w-16 h-16 text-[#FFD700] animate-[fall_1.7s_ease-in-out_infinite] absolute top-1/4 -right-4" />
-          
-          {/* Bottom row confetti */}
-          <PartyPopper className="w-20 h-20 text-[#1C999F] animate-[fall_2.3s_ease-in-out_infinite] absolute bottom-0 left-1/3" />
-          <PartyPopper className="w-16 h-16 text-[#FF3366] animate-[fall_1.9s_ease-in-out_infinite] absolute bottom-4 right-1/3" />
-          <PartyPopper className="w-18 h-18 text-[#FFD700] animate-[fall_2.1s_ease-in-out_infinite] absolute -bottom-8" />
+          <Sparkles className="w-24 h-24 text-[#FFD700] animate-[firework_2s_ease-out_infinite] absolute left-1/4" />
+          <Sparkles className="w-20 h-20 text-[#FFD700] animate-[firework_2s_ease-out_0.3s_infinite] absolute left-1/4 top-1/4" />
+          <Sparkles className="w-16 h-16 text-[#FFD700] animate-[firework_2s_ease-out_0.6s_infinite] absolute left-1/4 top-1/3" />
+          <Sparkles className="w-28 h-28 text-[#FF3366] animate-[firework_2.2s_ease-out_0.2s_infinite] absolute" />
+          <Sparkles className="w-24 h-24 text-[#FF3366] animate-[firework_2.2s_ease-out_0.5s_infinite] absolute top-1/4" />
+          <Sparkles className="w-20 h-20 text-[#FF3366] animate-[firework_2.2s_ease-out_0.8s_infinite] absolute top-1/3" />
+          <Sparkles className="w-24 h-24 text-[#1C999F] animate-[firework_1.8s_ease-out_0.4s_infinite] absolute right-1/4" />
+          <Sparkles className="w-20 h-20 text-[#1C999F] animate-[firework_1.8s_ease-out_0.7s_infinite] absolute right-1/4 top-1/4" />
+          <Sparkles className="w-16 h-16 text-[#1C999F] animate-[firework_1.8s_ease-out_1s_infinite] absolute right-1/4 top-1/3" />
         </div>
         <div className="animate-scale-in">
           <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
@@ -112,4 +106,3 @@ const OrderSourceStep = ({
 };
 
 export default OrderSourceStep;
-
