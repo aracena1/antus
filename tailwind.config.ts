@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -79,14 +80,14 @@ export default {
         },
         "confetti": {
           "0%": { 
-            transform: "translateY(0) translateX(0) rotate(0deg)",
+            transform: "translateY(-40vh) translateX(0) rotate(0deg)",
             opacity: "0"
           },
           "10%": {
             opacity: "1"
           },
           "100%": {
-            transform: "translateY(100vh) translateX(var(--confetti-x, 0)) rotate(var(--confetti-rotate, 720deg))",
+            transform: "translateY(140vh) translateX(var(--confetti-x, 0)) rotate(var(--confetti-rotate, 720deg))",
             opacity: "0"
           }
         }
@@ -94,15 +95,15 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "confetti-slow": "confetti 4s linear infinite",
-        "confetti-medium": "confetti 3s linear infinite",
-        "confetti-fast": "confetti 2.5s linear infinite",
-        "confetti-slow-2": "confetti 4s linear 0.5s infinite",
-        "confetti-medium-2": "confetti 3s linear 0.5s infinite",
-        "confetti-fast-2": "confetti 2.5s linear 0.5s infinite",
-        "confetti-slow-3": "confetti 4s linear 1s infinite",
-        "confetti-medium-3": "confetti 3s linear 1s infinite",
-        "confetti-fast-3": "confetti 2.5s linear 1s infinite",
+        "confetti-slow": "confetti 6s linear infinite",
+        "confetti-medium": "confetti 5s linear infinite",
+        "confetti-fast": "confetti 4.5s linear infinite",
+        "confetti-slow-2": "confetti 6s linear 0.5s infinite",
+        "confetti-medium-2": "confetti 5s linear 0.5s infinite",
+        "confetti-fast-2": "confetti 4.5s linear 0.5s infinite",
+        "confetti-slow-3": "confetti 6s linear 1s infinite",
+        "confetti-medium-3": "confetti 5s linear 1s infinite",
+        "confetti-fast-3": "confetti 4.5s linear 1s infinite",
       },
     },
   },
