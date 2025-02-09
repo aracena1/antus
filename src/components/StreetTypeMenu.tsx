@@ -29,10 +29,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
   ];
 
   const handleStreetTypeSelect = (value: string) => {
-    const selectedType = streetTypes.find(
-      type => type.toLowerCase().replace(/,?\s+/g, '-') === value
-    );
-    if (selectedType && value !== "elige-tipo-de-via") {
+    if (value !== "elige-tipo-de-via") {
       onStreetTypeSelect(value);
       setIsOpen(false);
     }
