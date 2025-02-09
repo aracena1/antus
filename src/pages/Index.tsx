@@ -42,14 +42,14 @@ const Index = () => {
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-2">
             <div className="relative">
-              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl text-gray-900 pointer-events-none">
+              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-3xl text-gray-900 pointer-events-none font-medium">
                 (57)
               </div>
               <Input
                 type="tel"
                 value={phone}
                 onChange={(e) => validatePhone(e.target.value)}
-                className={`block w-full h-20 text-3xl pl-24 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 ${
+                className={`block w-full h-20 text-3xl pl-24 pr-10 rounded-xl border-2 focus:border-emerald-500 focus:ring-emerald-500 transition-all placeholder:text-gray-400 placeholder:opacity-70 placeholder:text-3xl ${
                   phone ? 'text-emerald-500 font-medium' : 'text-gray-900'
                 }`}
                 placeholder="319 565 0368"
