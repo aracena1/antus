@@ -4,9 +4,9 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const MainMenu = () => {
   return (
@@ -18,25 +18,41 @@ const MainMenu = () => {
         </button>
       </DialogTrigger>
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
-        <div className="relative min-h-screen p-8">
-          <DialogClose className="absolute right-8 top-8 bg-[#F3EDF7] rounded-full p-4 hover:bg-[#E8DEF8] transition-colors">
-            <X className="h-6 w-6" />
-          </DialogClose>
-          
-          <div className="mt-20 space-y-6">
-            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
-              Antioquia
-            </button>
-            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
-              Bogotá, D.C.
-            </button>
-            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
-              Valle del Cauca
-            </button>
-            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
-              Atlántico
-            </button>
-          </div>
+        <div className="relative min-h-screen">
+          <ScrollArea className="h-screen px-8">
+            <div className="mt-20 space-y-6 pb-8">
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Antioquia
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Bogotá, D.C.
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Valle del Cauca
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Atlántico
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Santander
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Cundinamarca
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Bolívar
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Risaralda
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Caldas
+              </button>
+              <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
+                Tolima
+              </button>
+            </div>
+          </ScrollArea>
         </div>
       </DialogContent>
     </Dialog>
