@@ -18,12 +18,7 @@ const PaymentMethodStep = ({
 }: PaymentMethodStepProps) => {
   const handleMethodChange = (value: string) => {
     onMethodChange(value);
-    // Create a synthetic React form event instead of a native Event
-    const syntheticEvent = {
-      preventDefault: () => {},
-      target: document.createElement('form'),
-    } as React.FormEvent<HTMLFormElement>;
-    
+    const syntheticEvent = new Event("submit") as unknown as React.FormEvent;
     onSubmit(syntheticEvent);
   };
 
