@@ -235,6 +235,7 @@ const Index = () => {
                 onBack={() => setStep(4)}
                 onStreetTypeChange={(value) => setFormData(prev => ({ ...prev, tipoVia: value }))}
                 onSubmit={handleStreetTypeSubmit}
+                selectedCity={formData.ciudad}
               />
             )}
           </div>

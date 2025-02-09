@@ -9,6 +9,7 @@ interface StreetTypeStepProps {
   onBack: () => void;
   onStreetTypeChange: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
+  selectedCity: string;
 }
 
 const StreetTypeStep = ({
@@ -16,6 +17,7 @@ const StreetTypeStep = ({
   onBack,
   onStreetTypeChange,
   onSubmit,
+  selectedCity,
 }: StreetTypeStepProps) => {
   return (
     <>
@@ -30,7 +32,7 @@ const StreetTypeStep = ({
 
         <div className="text-left mb-8 mt-8">
           <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-            ¿Y en qué parte de Medellín?
+            ¿Y en qué parte de {selectedCity}?
           </h1>
           <p className="text-xl text-gray-500">
             Danos la dirección completa para que la tarjeta sí llegue
@@ -68,3 +70,4 @@ const StreetTypeStep = ({
 };
 
 export default StreetTypeStep;
+
