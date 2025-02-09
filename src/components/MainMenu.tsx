@@ -4,8 +4,9 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronRight, Search, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -14,6 +15,7 @@ import { Input } from "@/components/ui/input";
 const MainMenu = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const departments = [
+    "Elige un departamento",
     "Antioquia",
     "Bogotá, D.C.",
     "Valle del Cauca",
@@ -40,6 +42,11 @@ const MainMenu = () => {
       </DialogTrigger>
       <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
         <div className="relative min-h-screen">
+          <DialogClose className="absolute right-6 top-6 z-10">
+            <div className="bg-[#1C999F] rounded-full p-4 hover:opacity-90 transition-colors">
+              <X className="h-6 w-6 text-white" />
+            </div>
+          </DialogClose>
           <div className="sticky top-0 bg-white px-8 pt-6 pb-4 border-b z-10">
             <div className="relative">
               <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -53,17 +60,17 @@ const MainMenu = () => {
             </div>
           </div>
           <ScrollArea className="h-[calc(100vh-100px)] px-8">
-            <div className="space-y-2">
-              <RadioGroup defaultValue="antioquia">
+            <div className="space-y-2 mt-4">
+              <RadioGroup defaultValue="elige">
                 {filteredDepartments.map((department) => (
                   <div 
                     key={department} 
                     className="flex items-center space-x-4 w-full border-b py-4 px-2 hover:bg-gray-50 transition-colors"
                   >
                     <RadioGroupItem 
-                      value={department.toLowerCase()} 
+                      value={department.toLowerCase().replace(/,?\s+/g, '-')} 
                       id={department} 
-                      className="text-gray-600 border-gray-400"
+                      className="text-[#1C999F] border-[#1C999F]"
                     />
                     <Label 
                       htmlFor={department} 
@@ -83,3 +90,4 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
+
