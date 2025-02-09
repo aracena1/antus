@@ -35,7 +35,7 @@ const Index = () => {
             Bienvenida
           </h1>
           <p className="text-gray-600 text-lg">
-            Lo necesitamos para avisarte de la entrega del desodorante.
+            Necesitamos tu celular para avisarte de la entrega del desodorante.
           </p>
         </div>
 
