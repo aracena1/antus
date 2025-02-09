@@ -5,6 +5,7 @@ import PhoneStep from "@/components/form/PhoneStep";
 import NameStep from "@/components/form/NameStep";
 import CedulaStep from "@/components/form/CedulaStep";
 import AddressStep from "@/components/form/AddressStep";
+import StreetTypeStep from "@/components/form/StreetTypeStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -56,6 +57,7 @@ const Index = () => {
     departamento: "",
     ciudad: "",
     barrio: "",
+    tipoVia: "",
   });
   const { toast } = useToast();
 
@@ -88,6 +90,13 @@ const Index = () => {
   const handleAddressSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.departamento && formData.ciudad && formData.barrio) {
+      setStep(5);
+    }
+  };
+
+  const handleStreetTypeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.tipoVia) {
       toast({
         title: "¡Registro exitoso!",
         description: "Te avisaremos cuando tu desodorante esté en camino",
@@ -204,6 +213,21 @@ const Index = () => {
               />
             )}
           </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 5 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 5 && (
+              <StreetTypeStep
+                streetType={formData.tipoVia}
+                onBack={() => setStep(4)}
+                onStreetTypeChange={(value) => setFormData(prev => ({ ...prev, tipoVia: value }))}
+                onSubmit={handleStreetTypeSubmit}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -211,4 +235,3 @@ const Index = () => {
 };
 
 export default Index;
-
