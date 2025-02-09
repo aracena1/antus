@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -131,7 +130,7 @@ const Index = () => {
                   
                   <div className="text-left mb-4 mt-4">
                     <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
-                      Tu nombre completo
+                      Tu nombre y apellido
                     </h1>
                   </div>
                 </div>
@@ -139,9 +138,6 @@ const Index = () => {
                 <form onSubmit={handleNameSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Nombre y apellido
-                      </label>
                       <Input
                         type="text"
                         name="nombreCompleto"
