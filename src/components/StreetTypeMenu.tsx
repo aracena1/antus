@@ -34,18 +34,21 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
 
   const handleStreetTypeSelect = (value: string) => {
     if (value !== "elige-tipo-de-via") {
-      onStreetTypeSelect(value);
+      onStreetTypeSelect(normalizeValue(value));
       setIsOpen(false);
     }
   };
 
   const getDisplayStreetType = () => {
+    if (!selectedStreetType || selectedStreetType === "elige-tipo-de-via") {
+      return "Calle, Carrera, Manzana...";
+    }
     return streetTypes.find(
       type => normalizeValue(type) === selectedStreetType
-    ) || "Calle, Carrera, Manzana...";
+    ) || selectedStreetType;
   };
 
-  const isSelected = selectedStreetType !== "elige-tipo-de-via";
+  const isSelected = selectedStreetType !== "" && selectedStreetType !== "elige-tipo-de-via";
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -78,7 +81,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
                     className="flex items-center space-x-4 w-full border-b py-4 px-8 hover:bg-gray-50 transition-colors"
                   >
                     <RadioGroupItem 
-                      value={normalizeValue(type)}
+                      value={type}
                       id={type} 
                       className="text-[#1C999F] border-[#1C999F]"
                     />
@@ -100,3 +103,4 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
 };
 
 export default StreetTypeMenu;
+
