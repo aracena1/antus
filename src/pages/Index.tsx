@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -51,10 +50,9 @@ const Index = () => {
     const { name, value } = e.target;
     
     if (name === 'nombreCompleto') {
-      // Si el último carácter ingresado es un espacio, convertir la primera letra de la última palabra a mayúscula
       if (value.endsWith(' ')) {
         const words = value.split(' ');
-        const lastWord = words[words.length - 2]; // La palabra antes del espacio
+        const lastWord = words[words.length - 2];
         if (lastWord) {
           words[words.length - 2] = lastWord.charAt(0).toUpperCase() + lastWord.slice(1).toLowerCase();
           const newValue = words.join(' ');
@@ -65,6 +63,13 @@ const Index = () => {
           return;
         }
       }
+    } else if (name === 'cedula') {
+      const numericValue = value.replace(/\D/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [name]: numericValue
+      }));
+      return;
     }
     
     setFormData(prev => ({
@@ -214,7 +219,7 @@ const Index = () => {
                 <form onSubmit={handleCedulaSubmit} className="space-y-6">
                   <div>
                     <Input
-                      type="text"
+                      type="tel"
                       name="cedula"
                       value={formData.cedula}
                       onChange={handleInputChange}
@@ -224,6 +229,8 @@ const Index = () => {
                       }`}
                       placeholder="Escribe tu cédula"
                       required
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                     />
                   </div>
 
