@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { ChevronLeft, ArrowRight, Square, Triangle, Circle } from "lucide-react";
+import { ChevronLeft, ArrowRight, Square, Triangle, Circle, Star } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface OrderSourceStepProps {
@@ -31,29 +31,44 @@ const OrderSourceStep = ({
     return (
       <div className="flex flex-col items-center justify-center space-y-6">
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          {/* Green confetti - Left side */}
-          <Square className="w-4 h-4 text-[#1C999F] animate-confetti-slow absolute left-[10%] top-full" />
-          <Triangle className="w-5 h-5 text-[#F2FCE2] animate-confetti-medium absolute left-[20%] top-full" />
-          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-fast absolute left-[30%] top-full" />
-          <Square className="w-6 h-6 text-[#F2FCE2] animate-confetti-slow absolute left-[40%] top-full" />
-          <Triangle className="w-4 h-4 text-[#1C999F] animate-confetti-medium absolute left-[50%] top-full" />
+          {/* Left side confetti */}
+          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow absolute left-[5%] top-full" />
+          <Triangle className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium absolute left-[15%] top-full" />
+          <Circle className="w-2 h-2 text-[#1C999F] animate-confetti-fast absolute left-[25%] top-full" />
+          <Star className="w-5 h-5 text-[#F2FCE2] animate-confetti-slow absolute left-[35%] top-full" />
+          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-medium absolute left-[45%] top-full" />
           
-          {/* Orange confetti - Right side */}
-          <Square className="w-5 h-5 text-[#F97316] animate-confetti-fast absolute right-[10%] top-full" />
-          <Circle className="w-4 h-4 text-[#FEF7CD] animate-confetti-slow absolute right-[20%] top-full" />
-          <Triangle className="w-6 h-6 text-[#F97316] animate-confetti-medium absolute right-[30%] top-full" />
-          <Square className="w-3 h-3 text-[#FEF7CD] animate-confetti-fast absolute right-[40%] top-full" />
-          <Circle className="w-5 h-5 text-[#F97316] animate-confetti-slow absolute right-[50%] top-full" />
+          {/* Right side confetti */}
+          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-fast absolute right-[5%] top-full" />
+          <Circle className="w-3 h-3 text-[#FEF7CD] animate-confetti-slow absolute right-[15%] top-full" />
+          <Square className="w-5 h-5 text-[#F97316] animate-confetti-medium absolute right-[25%] top-full" />
+          <Star className="w-2 h-2 text-[#FEF7CD] animate-confetti-fast absolute right-[35%] top-full" />
+          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-slow absolute right-[45%] top-full" />
 
-          {/* Additional confetti pieces */}
-          <Square className="w-4 h-4 text-[#1C999F] animate-confetti-slow-2 absolute left-[15%] top-full" />
-          <Triangle className="w-5 h-5 text-[#F2FCE2] animate-confetti-medium-2 absolute left-[25%] top-full" />
-          <Circle className="w-3 h-3 text-[#F97316] animate-confetti-fast-2 absolute left-[35%] top-full" />
-          <Square className="w-6 h-6 text-[#FEF7CD] animate-confetti-slow-2 absolute left-[45%] top-full" />
-          <Triangle className="w-4 h-4 text-[#1C999F] animate-confetti-medium-2 absolute right-[15%] top-full" />
-          <Circle className="w-5 h-5 text-[#F97316] animate-confetti-fast-2 absolute right-[25%] top-full" />
-          <Square className="w-3 h-3 text-[#FEF7CD] animate-confetti-slow-2 absolute right-[35%] top-full" />
-          <Triangle className="w-4 h-4 text-[#1C999F] animate-confetti-medium-2 absolute right-[45%] top-full" />
+          {/* Second wave */}
+          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-slow-2 absolute left-[10%] top-full" />
+          <Square className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium-2 absolute left-[20%] top-full" />
+          <Triangle className="w-2 h-2 text-[#F97316] animate-confetti-fast-2 absolute left-[30%] top-full" />
+          <Star className="w-5 h-5 text-[#FEF7CD] animate-confetti-slow-2 absolute left-[40%] top-full" />
+          <Circle className="w-3 h-3 text-[#1C999F] animate-confetti-medium-2 absolute right-[10%] top-full" />
+          <Square className="w-4 h-4 text-[#F97316] animate-confetti-fast-2 absolute right-[20%] top-full" />
+          <Triangle className="w-2 h-2 text-[#FEF7CD] animate-confetti-slow-2 absolute right-[30%] top-full" />
+          <Star className="w-5 h-5 text-[#1C999F] animate-confetti-medium-2 absolute right-[40%] top-full" />
+
+          {/* Third wave */}
+          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow-3 absolute left-[7%] top-full" />
+          <Triangle className="w-4 h-4 text-[#F2FCE2] animate-confetti-medium-3 absolute left-[17%] top-full" />
+          <Circle className="w-2 h-2 text-[#F97316] animate-confetti-fast-3 absolute left-[27%] top-full" />
+          <Star className="w-5 h-5 text-[#FEF7CD] animate-confetti-slow-3 absolute left-[37%] top-full" />
+          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-medium-3 absolute right-[7%] top-full" />
+          <Triangle className="w-4 h-4 text-[#F97316] animate-confetti-fast-3 absolute right-[17%] top-full" />
+          <Circle className="w-2 h-2 text-[#FEF7CD] animate-confetti-slow-3 absolute right-[27%] top-full" />
+          <Star className="w-5 h-5 text-[#1C999F] animate-confetti-medium-3 absolute right-[37%] top-full" />
+
+          {/* Center confetti */}
+          <Square className="w-3 h-3 text-[#1C999F] animate-confetti-slow absolute left-[50%] top-full" />
+          <Circle className="w-4 h-4 text-[#F97316] animate-confetti-medium-2 absolute left-[55%] top-full" />
+          <Triangle className="w-2 h-2 text-[#FEF7CD] animate-confetti-fast-3 absolute left-[60%] top-full" />
         </div>
         <div className="animate-scale-in relative z-10">
           <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
