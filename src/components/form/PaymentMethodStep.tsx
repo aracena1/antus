@@ -16,6 +16,13 @@ const PaymentMethodStep = ({
   selectedMethod,
   onMethodChange,
 }: PaymentMethodStepProps) => {
+  const handleMethodChange = (value: string) => {
+    onMethodChange(value);
+    // Automáticamente enviar el formulario cuando se selecciona una opción
+    const event = new Event('submit') as React.FormEvent;
+    onSubmit(event);
+  };
+
   return (
     <>
       <div className="relative w-full">
@@ -40,7 +47,7 @@ const PaymentMethodStep = ({
       <form onSubmit={onSubmit} className="space-y-4">
         <RadioGroup
           value={selectedMethod}
-          onValueChange={onMethodChange}
+          onValueChange={handleMethodChange}
           className="gap-4"
         >
           <label
@@ -67,19 +74,6 @@ const PaymentMethodStep = ({
             <span className="text-xl">Voy a pagar contraentrega</span>
           </label>
         </RadioGroup>
-
-        <button
-          type="submit"
-          disabled={!selectedMethod}
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto
-            ${
-              selectedMethod
-                ? "bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
-        >
-          <ArrowRight className="w-6 h-6" />
-        </button>
       </form>
     </>
   );
