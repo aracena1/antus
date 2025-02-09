@@ -90,7 +90,7 @@ const StreetDetailsStep = ({
                   type="text"
                   value={streetNumber}
                   onChange={(e) => setStreetNumber(e.target.value)}
-                  className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
+                  className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
                   placeholder="30A"
                 />
               </div>
@@ -107,7 +107,7 @@ const StreetDetailsStep = ({
                 type="text"
                 value={address1}
                 onChange={(e) => setAddress1(e.target.value)}
-                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
+                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
                 placeholder="10B"
               />
               <span className="text-[#1C999F] text-xl font-medium">-</span>
@@ -115,7 +115,7 @@ const StreetDetailsStep = ({
                 type="text"
                 value={address2}
                 onChange={(e) => setAddress2(e.target.value)}
-                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
+                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
                 placeholder="30"
               />
             </div>
@@ -129,7 +129,7 @@ const StreetDetailsStep = ({
               type="text"
               value={complement}
               onChange={(e) => setComplement(e.target.value)}
-              className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
+              className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
               placeholder="Casa 5, apto 204"
             />
           </div>
