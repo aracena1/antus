@@ -16,14 +16,6 @@ const PaymentMethodStep = ({
   selectedMethod,
   onMethodChange,
 }: PaymentMethodStepProps) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Only submit if cash payment is selected
-    if (selectedMethod === "cash") {
-      onSubmit(e);
-    }
-  };
-
   return (
     <>
       <div className="relative w-full">
@@ -45,7 +37,7 @@ const PaymentMethodStep = ({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-4">
         <RadioGroup
           value={selectedMethod}
           onValueChange={onMethodChange}
@@ -78,10 +70,10 @@ const PaymentMethodStep = ({
 
         <button
           type="submit"
-          disabled={!selectedMethod || selectedMethod === "transfer"}
+          disabled={!selectedMethod}
           className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto
             ${
-              selectedMethod === "cash"
+              selectedMethod
                 ? "bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
@@ -94,4 +86,3 @@ const PaymentMethodStep = ({
 };
 
 export default PaymentMethodStep;
-
