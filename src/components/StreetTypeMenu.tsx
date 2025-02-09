@@ -42,7 +42,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
     const type = streetTypes.find(
       type => type.toLowerCase().replace(/,?\s+/g, '-') === selectedStreetType
     );
-    return type || "Elige tipo de vía";
+    return type || "Calle, Carrera, Manzana...";
   };
 
   const isSelected = selectedStreetType !== "elige-tipo-de-via";
