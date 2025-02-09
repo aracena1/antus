@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,24 @@ const Index = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    
+    if (name === 'nombreCompleto') {
+      // Si el último carácter ingresado es un espacio, convertir la última palabra a mayúsculas
+      if (value.endsWith(' ')) {
+        const words = value.split(' ');
+        const lastWord = words[words.length - 2]; // La palabra antes del espacio
+        if (lastWord) {
+          words[words.length - 2] = lastWord.toUpperCase();
+          const newValue = words.join(' ');
+          setFormData(prev => ({
+            ...prev,
+            [name]: newValue
+          }));
+          return;
+        }
+      }
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -147,7 +166,7 @@ const Index = () => {
                         className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
                           formData.nombreCompleto ? 'text-[#1C999F]' : 'text-gray-900'
                         }`}
-                        placeholder="Escribe tu nombre completo"
+                        placeholder="Nombre y apellido"
                         required
                       />
                     </div>
