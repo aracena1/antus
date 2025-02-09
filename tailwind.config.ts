@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -83,20 +82,11 @@ export default {
             transform: "translateY(0) translateX(0) rotate(0deg)",
             opacity: "0"
           },
-          "25%": {
-            transform: "translateY(-25vh) translateX(25px) rotate(90deg)",
-            opacity: "1"
-          },
-          "50%": {
-            transform: "translateY(-50vh) translateX(-25px) rotate(180deg)",
-            opacity: "1"
-          },
-          "75%": {
-            transform: "translateY(-75vh) translateX(25px) rotate(270deg)",
+          "10%": {
             opacity: "1"
           },
           "100%": {
-            transform: "translateY(-100vh) translateX(0) rotate(360deg)",
+            transform: "translateY(100vh) translateX(var(--confetti-x, 0)) rotate(var(--confetti-rotate, 720deg))",
             opacity: "0"
           }
         }
@@ -104,15 +94,15 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "confetti-slow": "confetti 6s ease-out forwards",
-        "confetti-medium": "confetti 5s ease-out forwards",
-        "confetti-fast": "confetti 4s ease-out forwards",
-        "confetti-slow-2": "confetti 6s ease-out 0.5s forwards",
-        "confetti-medium-2": "confetti 5s ease-out 0.5s forwards",
-        "confetti-fast-2": "confetti 4s ease-out 0.5s forwards",
-        "confetti-slow-3": "confetti 6s ease-out 1s forwards",
-        "confetti-medium-3": "confetti 5s ease-out 1s forwards",
-        "confetti-fast-3": "confetti 4s ease-out 1s forwards",
+        "confetti-slow": "confetti 4s linear infinite",
+        "confetti-medium": "confetti 3s linear infinite",
+        "confetti-fast": "confetti 2.5s linear infinite",
+        "confetti-slow-2": "confetti 4s linear 0.5s infinite",
+        "confetti-medium-2": "confetti 3s linear 0.5s infinite",
+        "confetti-fast-2": "confetti 2.5s linear 0.5s infinite",
+        "confetti-slow-3": "confetti 4s linear 1s infinite",
+        "confetti-medium-3": "confetti 3s linear 1s infinite",
+        "confetti-fast-3": "confetti 2.5s linear 1s infinite",
       },
     },
   },
