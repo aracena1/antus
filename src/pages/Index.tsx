@@ -76,7 +76,11 @@ const Index = () => {
 
           <Button
             type="submit"
-            className="w-full h-14 text-lg bg-[#89D185] hover:bg-[#73B673] text-white rounded-xl transition-all duration-200 ease-in-out"
+            className={`w-full h-14 text-lg ${
+              phone.length === 10
+                ? "bg-[#73B673] hover:bg-[#5A9C5A]"
+                : "bg-[#89D185] hover:bg-[#73B673]"
+            } text-white rounded-xl transition-all duration-200 ease-in-out`}
           >
             Enviar
           </Button>
