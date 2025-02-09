@@ -10,7 +10,6 @@ const Index = () => {
   const { toast } = useToast();
 
   const validatePhone = (value: string) => {
-    // Permite solo números y limita a 10 dígitos después del código de país
     const cleanedValue = value.replace(/\D/g, "").slice(0, 10);
     setPhone(cleanedValue);
   };
@@ -29,7 +28,7 @@ const Index = () => {
   };
 
   const formatPhone = (value: string) => {
-    if (!value) return "(57) ";
+    if (!value) return "(57) 3195650368";
     return `(57) ${value}`;
   };
 
@@ -52,7 +51,9 @@ const Index = () => {
                 type="tel"
                 value={formatPhone(phone)}
                 onChange={(e) => validatePhone(e.target.value.slice(5))}
-                className="block w-full h-14 text-lg pl-4 pr-10 rounded-xl border-gray-200 focus:border-purple-500 focus:ring-purple-500 transition-all"
+                className={`block w-full h-14 text-lg pl-4 pr-10 rounded-xl border-gray-200 focus:border-purple-500 focus:ring-purple-500 transition-all ${
+                  phone ? 'text-emerald-500' : 'text-gray-400'
+                }`}
                 placeholder="(57) Ingresa tu número"
               />
               {phone && !isValid && (
