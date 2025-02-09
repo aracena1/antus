@@ -1,8 +1,7 @@
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronLeft, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronDown, ArrowRight } from "lucide-react";
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -22,12 +21,19 @@ const StreetDetailsStep = ({
   selectedStreetType,
 }: StreetDetailsStepProps) => {
   const [streetNumber, setStreetNumber] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [complement, setComplement] = useState("");
   const streetTypes = ["Calle", "Carrera", "Circunvalar", "Diagonal", "Transversal"];
 
   const getDisplayStreetType = () => {
     return streetTypes.find(
       type => type.toLowerCase() === selectedStreetType
     ) || selectedStreetType;
+  };
+
+  const isFormComplete = () => {
+    return streetNumber && address1 && address2 && complement;
   };
 
   return (
@@ -59,7 +65,7 @@ const StreetDetailsStep = ({
             </label>
             <div className="flex items-center gap-4">
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex-1 h-14 px-4 text-xl text-left border rounded-xl hover:border-[#9b87f5] transition-colors">
+                <DropdownMenuTrigger className="flex-1 h-14 px-4 text-xl text-left border rounded-xl hover:border-[#1C999F] transition-colors">
                   <div className="flex items-center justify-between">
                     <span>{getDisplayStreetType()}</span>
                     <ChevronDown className="ml-2 h-5 w-5" />
@@ -77,14 +83,14 @@ const StreetDetailsStep = ({
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <div className="w-px h-8 bg-[#9b87f5]" />
+              <div className="w-px h-8 bg-[#1C999F]" />
 
               <div className="flex-1">
                 <Input
                   type="text"
                   value={streetNumber}
                   onChange={(e) => setStreetNumber(e.target.value)}
-                  className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
+                  className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
                   placeholder="30A"
                 />
               </div>
@@ -96,16 +102,20 @@ const StreetDetailsStep = ({
               Segunda parte de tu dirección
             </label>
             <div className="flex gap-4 items-center">
-              <span className="text-[#9b87f5] text-xl font-medium">#</span>
+              <span className="text-[#1C999F] text-xl font-medium">#</span>
               <Input
                 type="text"
-                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
+                value={address1}
+                onChange={(e) => setAddress1(e.target.value)}
+                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
                 placeholder="10B"
               />
-              <span className="text-[#9b87f5] text-xl font-medium">-</span>
+              <span className="text-[#1C999F] text-xl font-medium">-</span>
               <Input
                 type="text"
-                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
+                value={address2}
+                onChange={(e) => setAddress2(e.target.value)}
+                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
                 placeholder="30"
               />
             </div>
@@ -117,21 +127,28 @@ const StreetDetailsStep = ({
             </label>
             <Input
               type="text"
-              className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#9b87f5] focus:ring-[#9b87f5] transition-all bg-white pl-4"
+              value={complement}
+              onChange={(e) => setComplement(e.target.value)}
+              className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4"
               placeholder="Casa 5, apto 204"
             />
           </div>
         </div>
 
-        <Button
+        <button
           type="submit"
-          className="w-full h-14 text-lg bg-[#9b87f5] hover:bg-[#7E69AB] text-white rounded-xl transition-all duration-200 ease-in-out mt-8"
+          disabled={!isFormComplete()}
+          className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-8 ml-auto
+            ${isFormComplete() 
+              ? 'bg-[#1C999F] hover:bg-[#167378] text-white' 
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
         >
-          Continuar
-        </Button>
+          <ArrowRight className="w-6 h-6" />
+        </button>
       </form>
     </>
   );
 };
 
 export default StreetDetailsStep;
+
