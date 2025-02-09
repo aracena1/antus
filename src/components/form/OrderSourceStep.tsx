@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { ChevronLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ArrowRight, PartyPopper } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 
@@ -18,13 +18,29 @@ const OrderSourceStep = ({
   onSubmit,
 }: OrderSourceStepProps) => {
   const [instagram, setInstagram] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (instagram.trim()) {
+      setShowSuccess(true);
       onSubmit(e);
     }
   };
+
+  if (showSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center space-y-6 animate-scale-in">
+        <PartyPopper className="w-20 h-20 text-[#1C999F] animate-bounce" />
+        <h1 className="text-[40px] leading-[1.15] font-normal text-black text-center">
+          ¡Felicitaciones!
+        </h1>
+        <p className="text-gray-500 text-xl text-center max-w-md">
+          Tu desodorante está agendado. Coméntale a tu asesor en Instagram.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -79,3 +95,4 @@ const OrderSourceStep = ({
 };
 
 export default OrderSourceStep;
+
