@@ -30,16 +30,16 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
 
   const handleStreetTypeSelect = (value: string) => {
     if (value !== "elige-tipo-de-via") {
-      onStreetTypeSelect(value);
+      const normalizedValue = value.toLowerCase().replace(/\s+/g, '-');
+      onStreetTypeSelect(normalizedValue);
       setIsOpen(false);
     }
   };
 
   const getDisplayStreetType = () => {
-    const type = streetTypes.find(
-      type => type.toLowerCase().replace(/,?\s+/g, '-') === selectedStreetType
-    );
-    return type || "Calle, Carrera, Manzana...";
+    return streetTypes.find(
+      type => type.toLowerCase().replace(/\s+/g, '-') === selectedStreetType
+    ) || "Calle, Carrera, Manzana...";
   };
 
   const isSelected = selectedStreetType !== "elige-tipo-de-via";
@@ -76,7 +76,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
                     className="flex items-center space-x-4 w-full border-b py-4 px-8 hover:bg-gray-50 transition-colors"
                   >
                     <RadioGroupItem 
-                      value={type.toLowerCase().replace(/,?\s+/g, '-')} 
+                      value={type.toLowerCase().replace(/\s+/g, '-')} 
                       id={type} 
                       className="text-[#1C999F] border-[#1C999F]"
                     />
