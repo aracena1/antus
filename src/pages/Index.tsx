@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -87,18 +86,7 @@ const Index = () => {
                         placeholder="319 565 0368"
                         autoFocus
                       />
-                      {phone && !isValid && (
-                        <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-red-500">
-                          !
-                        </span>
-                      )}
                     </div>
-                    
-                    {phone && !isValid && (
-                      <p className="text-red-500 text-sm mt-1">
-                        Por favor ingresa un número válido de 10 dígitos
-                      </p>
-                    )}
                   </div>
 
                   <Button
@@ -127,16 +115,16 @@ const Index = () => {
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="absolute left-0 top-0 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute left-0 top-2 p-2 text-black/60 hover:text-black transition-colors"
                   >
-                    <ChevronLeft size={32} />
+                    <ChevronLeft size={36} strokeWidth={1.5} />
                   </button>
                   
-                  <div className="text-center mb-8 mt-4">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                  <div className="text-center mb-16 mt-16">
+                    <h1 className="text-[2.75rem] font-medium text-black mb-2 leading-tight">
                       Tu nombre completo
                     </h1>
-                    <p className="text-gray-500 text-lg">
+                    <p className="text-gray-500 text-lg mt-4">
                       Tal cual como aparece en tu documento de identidad.
                     </p>
                   </div>
