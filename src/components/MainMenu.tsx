@@ -4,8 +4,9 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
 
 const MainMenu = () => {
   return (
@@ -16,20 +17,23 @@ const MainMenu = () => {
           <ChevronRight className="h-6 w-6" />
         </button>
       </DialogTrigger>
-      <DialogContent className="w-full max-w-[400px] p-0">
-        <div className="p-4">
-          <h2 className="text-xl font-medium">Selecciona un departamento</h2>
-          <div className="mt-4 space-y-2">
-            <button className="w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-colors">
+      <DialogContent className="w-full h-full max-w-full p-0 border-none bg-white">
+        <div className="relative min-h-screen p-8">
+          <DialogClose className="absolute right-8 top-8 bg-[#F3EDF7] rounded-full p-4 hover:bg-[#E8DEF8] transition-colors">
+            <X className="h-6 w-6" />
+          </DialogClose>
+          
+          <div className="mt-20 space-y-6">
+            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
               Antioquia
             </button>
-            <button className="w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
               Bogotá, D.C.
             </button>
-            <button className="w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
               Valle del Cauca
             </button>
-            <button className="w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-colors">
+            <button className="w-full text-left px-4 py-6 hover:bg-gray-50 rounded-lg transition-colors border-b text-4xl font-normal">
               Atlántico
             </button>
           </div>
