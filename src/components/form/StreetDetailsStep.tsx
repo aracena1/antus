@@ -24,6 +24,7 @@ const StreetDetailsStep = ({
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [complement, setComplement] = useState("");
+  const [reference, setReference] = useState("");
   const streetTypes = ["Calle", "Carrera", "Circunvalar", "Diagonal", "Transversal"];
 
   const getDisplayStreetType = () => {
@@ -33,7 +34,7 @@ const StreetDetailsStep = ({
   };
 
   const isFormComplete = () => {
-    return streetNumber && address1 && address2 && complement;
+    return streetNumber && address1 && address2 && complement && reference;
   };
 
   return (
@@ -129,9 +130,17 @@ const StreetDetailsStep = ({
               className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
               placeholder="Casa 5, apto 204"
             />
-            <div className="mt-2 space-y-1">
-              <p className="text-gray-500 text-lg">Ayúdanos a llegar</p>
-              <p className="text-gray-400">Portón verde de la esquina</p>
+            <div className="mt-4">
+              <label className="block text-gray-500 text-lg mb-2">
+                Ayúdanos a llegar
+              </label>
+              <Input
+                type="text"
+                value={reference}
+                onChange={(e) => setReference(e.target.value)}
+                className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
+                placeholder="Portón verde de la esquina"
+              />
             </div>
           </div>
         </div>
@@ -152,4 +161,3 @@ const StreetDetailsStep = ({
 };
 
 export default StreetDetailsStep;
-
