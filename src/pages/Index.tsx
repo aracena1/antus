@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ChevronLeft } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Index = () => {
   const [step, setStep] = useState(1);
@@ -11,6 +13,9 @@ const Index = () => {
   const [formData, setFormData] = useState({
     nombreCompleto: "",
     cedula: "",
+    departamento: "",
+    ciudad: "",
+    barrio: "",
   });
   const { toast } = useToast();
 
@@ -39,9 +44,16 @@ const Index = () => {
   const handleCedulaSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.cedula) {
+      setStep(4);
+    }
+  };
+
+  const handleAddressSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.departamento && formData.ciudad && formData.barrio) {
       toast({
-        title: "Datos registrados",
-        description: "Gracias por completar el formulario",
+        title: "¡Registro exitoso!",
+        description: "Te avisaremos cuando tu desodorante esté en camino",
       });
     }
   };
@@ -78,13 +90,22 @@ const Index = () => {
     }));
   };
 
+  const handleSelectChange = (value: string, name: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const isNameComplete = formData.nombreCompleto;
   const isCedulaComplete = formData.cedula.length > 0;
+  const isAddressComplete = formData.departamento && formData.ciudad && formData.barrio;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md">
         <div className="relative w-full h-full flex items-center justify-center">
+          {/* Phone step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 1 ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
@@ -136,6 +157,7 @@ const Index = () => {
             )}
           </div>
 
+          {/* Name step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
@@ -193,6 +215,7 @@ const Index = () => {
             )}
           </div>
 
+          {/* Cedula step */}
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 3 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
@@ -242,6 +265,111 @@ const Index = () => {
                         : "bg-gray-300 cursor-not-allowed"
                     } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
                     disabled={!isCedulaComplete}
+                  >
+                    Continuar
+                  </Button>
+                </form>
+              </>
+            )}
+          </div>
+
+          {/* Address step */}
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 4 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 4 && (
+              <>
+                <div className="relative w-full">
+                  <button
+                    type="button"
+                    onClick={() => setStep(3)}
+                    className="absolute -left-4 -top-16 p-2 text-black/60 hover:text-black transition-colors"
+                  >
+                    <ChevronLeft size={36} strokeWidth={1.5} />
+                  </button>
+                  
+                  <div className="text-left mb-8">
+                    <h1 className="text-3xl font-medium text-black mb-2 leading-tight">
+                      ¿A dónde quieres que llegue tu desodorante?
+                    </h1>
+                    <p className="text-gray-600 text-lg">
+                      El envío de tu desodorante no tiene costo.
+                    </p>
+                  </div>
+                </div>
+
+                <form onSubmit={handleAddressSubmit} className="space-y-6">
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-gray-600 mb-2 text-lg">Departamento</label>
+                      <Select
+                        onValueChange={(value) => handleSelectChange(value, 'departamento')}
+                        value={formData.departamento}
+                      >
+                        <SelectTrigger 
+                          className={`w-full h-16 text-xl border-2 rounded-xl ${
+                            formData.departamento ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400'
+                          }`}
+                        >
+                          <SelectValue placeholder="Elige un departamento" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="antioquia">Antioquia</SelectItem>
+                          <SelectItem value="cundinamarca">Cundinamarca</SelectItem>
+                          <SelectItem value="valle">Valle del Cauca</SelectItem>
+                          {/* Add more departments as needed */}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-gray-600 mb-2 text-lg">Ciudad o pueblo</label>
+                      <Select
+                        onValueChange={(value) => handleSelectChange(value, 'ciudad')}
+                        value={formData.ciudad}
+                      >
+                        <SelectTrigger 
+                          className={`w-full h-16 text-xl border-2 rounded-xl ${
+                            formData.ciudad ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-400'
+                          }`}
+                        >
+                          <SelectValue placeholder="Elige una ciudad" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="medellin">Medellín</SelectItem>
+                          <SelectItem value="bogota">Bogotá</SelectItem>
+                          <SelectItem value="cali">Cali</SelectItem>
+                          {/* Add more cities as needed */}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-gray-600 mb-2 text-lg">Barrio</label>
+                      <Input
+                        type="text"
+                        name="barrio"
+                        value={formData.barrio}
+                        onChange={handleInputChange}
+                        className={`block w-full h-16 text-xl font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 ${
+                          formData.barrio ? 'text-[#1C999F] border-[#1C999F]' : 'text-gray-900'
+                        }`}
+                        placeholder="Escribe tu barrio"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className={`w-full h-14 text-lg ${
+                      isAddressComplete
+                        ? "bg-[#1C999F] hover:bg-[#158589]"
+                        : "bg-gray-300 cursor-not-allowed"
+                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
+                    disabled={!isAddressComplete}
                   >
                     Continuar
                   </Button>
