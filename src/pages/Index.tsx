@@ -56,7 +56,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md">
-        <div className="relative w-full">
+        <div className="relative w-full h-full flex items-center justify-center">
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 1 ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
