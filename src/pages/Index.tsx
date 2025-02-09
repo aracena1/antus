@@ -1,9 +1,45 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ChevronLeft } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+const departmentCities: { [key: string]: string[] } = {
+  antioquia: [
+    "Medellín",
+    "Abejorral",
+    "Abriquí",
+    "Alejandría",
+    "Amagá",
+    "Amalfi",
+    "Andes",
+    "Bello",
+    "Envigado",
+    "Itagüí",
+    "Rionegro",
+  ],
+  bogota: ["Bogotá"],
+  valle: [
+    "Cali",
+    "Palmira",
+    "Buenaventura",
+    "Buga",
+    "Tuluá",
+    "Cartago",
+    "Jamundí",
+    "Yumbo",
+  ],
+  atlantico: [
+    "Barranquilla",
+    "Soledad",
+    "Malambo",
+    "Sabanalarga",
+    "Puerto Colombia",
+    "Galapa",
+  ],
+};
 
 const Index = () => {
   const [step, setStep] = useState(1);
@@ -90,10 +126,18 @@ const Index = () => {
   };
 
   const handleSelectChange = (value: string, name: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    if (name === 'departamento') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+        ciudad: '' // Reset ciudad when departamento changes
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const isNameComplete = formData.nombreCompleto;
@@ -362,10 +406,12 @@ const Index = () => {
                         >
                           <SelectValue placeholder="Elige una ciudad" />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="medellin">Medellín</SelectItem>
-                          <SelectItem value="bogota">Bogotá</SelectItem>
-                          <SelectItem value="cali">Cali</SelectItem>
+                        <SelectContent className="max-h-[400px] w-[400px] p-2">
+                          {formData.departamento && departmentCities[formData.departamento]?.map((city) => (
+                            <SelectItem key={city} value={city.toLowerCase()}>
+                              {city}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -408,3 +454,4 @@ const Index = () => {
 };
 
 export default Index;
+
