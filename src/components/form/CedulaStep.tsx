@@ -12,7 +12,8 @@ interface CedulaStepProps {
 }
 
 const CedulaStep = ({ cedula, onBack, onChange, onSubmit }: CedulaStepProps) => {
-  const isCedulaComplete = cedula.length >= 8 && cedula.length <= 10;
+  // Ahora el botón se habilitará con cualquier entrada de números
+  const isCedulaComplete = cedula.length > 0;
 
   return (
     <>
@@ -67,4 +68,3 @@ const CedulaStep = ({ cedula, onBack, onChange, onSubmit }: CedulaStepProps) => 
 };
 
 export default CedulaStep;
-

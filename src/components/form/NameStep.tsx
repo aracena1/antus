@@ -12,8 +12,8 @@ interface NameStepProps {
 }
 
 const NameStep = ({ nombreCompleto, onBack, onChange, onSubmit }: NameStepProps) => {
-  // Move isNameComplete definition inside the component
-  const isNameComplete = nombreCompleto.trim().split(' ').length >= 2;
+  // Ahora el botón se habilitará con cualquier entrada de texto
+  const isNameComplete = nombreCompleto.trim().length > 0;
 
   return (
     <>
