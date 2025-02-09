@@ -129,9 +129,6 @@ const Index = () => {
                   <h1 className="text-4xl font-bold text-gray-900 mb-2">
                     Tu nombre completo
                   </h1>
-                  <p className="text-gray-600 text-lg mb-8">
-                    Tal cual como aparece en tu documento de identidad.
-                  </p>
                 </div>
 
                 <form onSubmit={handleNameSubmit} className="space-y-6">
@@ -167,9 +164,6 @@ const Index = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Segundo apellido (Opcional)
-                      </label>
                       <Input
                         type="text"
                         name="segundoApellido"
