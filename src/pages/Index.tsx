@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import PhoneStep from "@/components/form/PhoneStep";
@@ -76,46 +77,46 @@ const Index = () => {
   const handlePhoneSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (phone.length === 10) {
-      setStep(3);
+      setStep(2);
     }
   };
 
   const handleNameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.nombreCompleto) {
-      setStep(4);
+      setStep(3);
     }
   };
 
   const handleCedulaSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.cedula) {
-      setStep(5);
+      setStep(4);
     }
   };
 
   const handleAddressSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.departamento && formData.ciudad && formData.barrio) {
-      setStep(6);
+      setStep(5);
     }
   };
 
   const handleStreetTypeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.tipoVia && formData.tipoVia !== "elige-tipo-de-via") {
-      setStep(7);
+      setStep(6);
     }
   };
 
   const handleStreetDetailsSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(8);
+    setStep(7);
   };
 
   const handleQuantitySubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(2);
+    setStep(8);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -171,21 +172,6 @@ const Index = () => {
             }`}
           >
             {step === 1 && (
-              <QuantityStep
-                quantity={quantity}
-                onQuantityChange={setQuantity}
-                onBack={() => null}
-                onSubmit={handleQuantitySubmit}
-              />
-            )}
-          </div>
-
-          <div
-            className={`absolute w-full transition-all duration-500 transform ${
-              step === 2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-            }`}
-          >
-            {step === 2 && (
               <PhoneStep
                 phone={phone}
                 validatePhone={validatePhone}
@@ -196,15 +182,30 @@ const Index = () => {
 
           <div
             className={`absolute w-full transition-all duration-500 transform ${
+              step === 2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 2 && (
+              <NameStep
+                nombreCompleto={formData.nombreCompleto}
+                onBack={() => setStep(1)}
+                onChange={handleInputChange}
+                onSubmit={handleNameSubmit}
+              />
+            )}
+          </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
               step === 3 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             }`}
           >
             {step === 3 && (
-              <NameStep
-                nombreCompleto={formData.nombreCompleto}
+              <CedulaStep
+                cedula={formData.cedula}
                 onBack={() => setStep(2)}
                 onChange={handleInputChange}
-                onSubmit={handleNameSubmit}
+                onSubmit={handleCedulaSubmit}
               />
             )}
           </div>
@@ -215,26 +216,11 @@ const Index = () => {
             }`}
           >
             {step === 4 && (
-              <CedulaStep
-                cedula={formData.cedula}
-                onBack={() => setStep(3)}
-                onChange={handleInputChange}
-                onSubmit={handleCedulaSubmit}
-              />
-            )}
-          </div>
-
-          <div
-            className={`absolute w-full transition-all duration-500 transform ${
-              step === 5 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-            }`}
-          >
-            {step === 5 && (
               <AddressStep
                 formData={formData}
                 availableCities={availableCities}
                 isCitySelected={isCitySelected}
-                onBack={() => setStep(4)}
+                onBack={() => setStep(3)}
                 onDepartmentChange={handleDepartmentChange}
                 onChange={handleInputChange}
                 onCityChange={(value) => setFormData(prev => ({ ...prev, ciudad: value }))}
@@ -245,16 +231,30 @@ const Index = () => {
 
           <div
             className={`absolute w-full transition-all duration-500 transform ${
+              step === 5 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 5 && (
+              <StreetTypeStep
+                streetType={formData.tipoVia}
+                onBack={() => setStep(4)}
+                onStreetTypeChange={(value) => setFormData(prev => ({ ...prev, tipoVia: value }))}
+                onSubmit={handleStreetTypeSubmit}
+                selectedCity={formData.ciudad}
+              />
+            )}
+          </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
               step === 6 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             }`}
           >
             {step === 6 && (
-              <StreetTypeStep
-                streetType={formData.tipoVia}
+              <StreetDetailsStep
+                selectedStreetType={formData.tipoVia}
                 onBack={() => setStep(5)}
-                onStreetTypeChange={(value) => setFormData(prev => ({ ...prev, tipoVia: value }))}
-                onSubmit={handleStreetTypeSubmit}
-                selectedCity={formData.ciudad}
+                onSubmit={handleStreetDetailsSubmit}
               />
             )}
           </div>
@@ -265,13 +265,15 @@ const Index = () => {
             }`}
           >
             {step === 7 && (
-              <StreetDetailsStep
-                selectedStreetType={formData.tipoVia}
+              <QuantityStep
+                quantity={quantity}
+                onQuantityChange={setQuantity}
                 onBack={() => setStep(6)}
-                onSubmit={handleStreetDetailsSubmit}
+                onSubmit={handleQuantitySubmit}
               />
             )}
           </div>
+
           <div
             className={`absolute w-full transition-all duration-500 transform ${
               step === 8 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
