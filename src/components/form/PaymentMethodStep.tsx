@@ -16,6 +16,17 @@ const PaymentMethodStep = ({
   selectedMethod,
   onMethodChange,
 }: PaymentMethodStepProps) => {
+  const handleMethodChange = (value: string) => {
+    onMethodChange(value);
+    if (value === "transfer") {
+      const syntheticEvent = {
+        preventDefault: () => {},
+        target: document.createElement('form')
+      } as React.FormEvent<HTMLFormElement>;
+      onSubmit(syntheticEvent);
+    }
+  };
+
   return (
     <>
       <div className="relative w-full">
@@ -40,7 +51,7 @@ const PaymentMethodStep = ({
       <form onSubmit={onSubmit} className="space-y-4">
         <RadioGroup
           value={selectedMethod}
-          onValueChange={onMethodChange}
+          onValueChange={handleMethodChange}
           className="gap-4"
         >
           <label
@@ -86,3 +97,4 @@ const PaymentMethodStep = ({
 };
 
 export default PaymentMethodStep;
+
