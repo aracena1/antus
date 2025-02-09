@@ -78,18 +78,20 @@ const PaymentMethodStep = ({
           </label>
         </RadioGroup>
 
-        <button
-          type="submit"
-          disabled={!selectedMethod}
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto
-            ${
-              selectedMethod
-                ? "bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
-        >
-          <ArrowRight className="w-6 h-6" />
-        </button>
+        {selectedMethod === "cash" && (
+          <button
+            type="submit"
+            disabled={!selectedMethod}
+            className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-4 ml-auto
+              ${
+                selectedMethod
+                  ? "bg-[#1C999F] hover:bg-[#1C999F]/90 text-white"
+                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+          >
+            <ArrowRight className="w-6 h-6" />
+          </button>
+        )}
       </form>
     </>
   );
