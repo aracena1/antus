@@ -129,6 +129,10 @@ const StreetDetailsStep = ({
               className="h-14 text-xl font-normal rounded-xl border border-[#E5E7EB] focus:border-[#1C999F] focus:ring-[#1C999F] transition-all bg-white pl-4 placeholder:text-[#666666]/40"
               placeholder="Casa 5, apto 204"
             />
+            <div className="mt-2 space-y-1">
+              <p className="text-gray-500 text-lg">Ayúdanos a llegar</p>
+              <p className="text-gray-400">Portón verde de la esquina</p>
+            </div>
           </div>
         </div>
 
@@ -137,7 +141,7 @@ const StreetDetailsStep = ({
           disabled={!isFormComplete()}
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out mt-8 ml-auto
             ${isFormComplete() 
-              ? 'bg-[#1C999F] hover:bg-[#167378] text-white' 
+              ? 'bg-[#1C999F] hover:bg-[#1C999F]/90 text-white' 
               : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
         >
           <ArrowRight className="w-6 h-6" />
