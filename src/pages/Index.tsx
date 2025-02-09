@@ -157,8 +157,11 @@ const Index = () => {
                         name="primerApellido"
                         value={formData.primerApellido}
                         onChange={handleInputChange}
-                        className="block w-full h-14 text-lg rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F]"
-                        placeholder="Escribe tu primer apellido"
+                        style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
+                        className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
+                          formData.primerApellido ? 'text-[#1C999F]' : 'text-gray-900'
+                        }`}
+                        placeholder="Escribe tu apellido"
                         required
                       />
                     </div>
@@ -191,3 +194,4 @@ const Index = () => {
 };
 
 export default Index;
+
