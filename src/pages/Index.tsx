@@ -11,7 +11,6 @@ const Index = () => {
   const [formData, setFormData] = useState({
     nombres: "",
     primerApellido: "",
-    segundoApellido: "",
   });
   const { toast } = useToast();
 
@@ -168,17 +167,6 @@ const Index = () => {
                         }`}
                         placeholder="Escribe tu apellido"
                         required
-                      />
-                    </div>
-
-                    <div>
-                      <Input
-                        type="text"
-                        name="segundoApellido"
-                        value={formData.segundoApellido}
-                        onChange={handleInputChange}
-                        className="block w-full h-14 text-lg rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F]"
-                        placeholder=""
                       />
                     </div>
                   </div>
