@@ -52,6 +52,8 @@ const Index = () => {
     }));
   };
 
+  const isNameFormComplete = formData.nombres && formData.primerApellido;
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md space-y-8">
@@ -142,8 +144,11 @@ const Index = () => {
                         name="nombres"
                         value={formData.nombres}
                         onChange={handleInputChange}
-                        className="block w-full h-14 text-lg rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F]"
-                        placeholder="Escribe tus nombres"
+                        style={{ fontSize: '1.875rem', lineHeight: '2.25rem' }}
+                        className={`block w-full h-20 font-medium rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F] transition-all placeholder:text-gray-400 placeholder:text-3xl placeholder:font-medium ${
+                          formData.nombres ? 'text-[#1C999F]' : 'text-gray-900'
+                        }`}
+                        placeholder="Escribe tu nombre"
                         required
                       />
                     </div>
@@ -173,13 +178,19 @@ const Index = () => {
                         value={formData.segundoApellido}
                         onChange={handleInputChange}
                         className="block w-full h-14 text-lg rounded-xl border-2 focus:border-[#1C999F] focus:ring-[#1C999F]"
+                        placeholder=""
                       />
                     </div>
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full h-14 text-lg bg-[#1C999F] hover:bg-[#158589] text-white rounded-xl transition-all duration-200 ease-in-out mt-4"
+                    className={`w-full h-14 text-lg ${
+                      isNameFormComplete
+                        ? "bg-[#1C999F] hover:bg-[#158589]"
+                        : "bg-gray-300 cursor-not-allowed"
+                    } text-white rounded-xl transition-all duration-200 ease-in-out mt-4`}
+                    disabled={!isNameFormComplete}
                   >
                     Continuar
                   </Button>
@@ -194,4 +205,3 @@ const Index = () => {
 };
 
 export default Index;
-
