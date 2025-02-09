@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import PhoneStep from "@/components/form/PhoneStep";
@@ -6,6 +5,7 @@ import NameStep from "@/components/form/NameStep";
 import CedulaStep from "@/components/form/CedulaStep";
 import AddressStep from "@/components/form/AddressStep";
 import StreetTypeStep from "@/components/form/StreetTypeStep";
+import StreetDetailsStep from "@/components/form/StreetDetailsStep";
 
 const departmentCities: { [key: string]: string[] } = {
   antioquia: [
@@ -58,6 +58,11 @@ const Index = () => {
     ciudad: "",
     barrio: "",
     tipoVia: "",
+    direccionDetalle: {
+      numero: "",
+      segundaParte: "",
+      complemento: ""
+    }
   });
   const { toast } = useToast();
 
@@ -96,12 +101,17 @@ const Index = () => {
 
   const handleStreetTypeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.tipoVia) {
-      toast({
-        title: "¡Registro exitoso!",
-        description: "Te avisaremos cuando tu desodorante esté en camino",
-      });
+    if (formData.tipoVia && formData.tipoVia !== "elige-tipo-de-via") {
+      setStep(6);
     }
+  };
+
+  const handleStreetDetailsSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "¡Registro exitoso!",
+      description: "Te avisaremos cuando tu desodorante esté en camino",
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -225,6 +235,20 @@ const Index = () => {
                 onBack={() => setStep(4)}
                 onStreetTypeChange={(value) => setFormData(prev => ({ ...prev, tipoVia: value }))}
                 onSubmit={handleStreetTypeSubmit}
+              />
+            )}
+          </div>
+
+          <div
+            className={`absolute w-full transition-all duration-500 transform ${
+              step === 6 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {step === 6 && (
+              <StreetDetailsStep
+                selectedStreetType={formData.tipoVia}
+                onBack={() => setStep(5)}
+                onSubmit={handleStreetDetailsSubmit}
               />
             )}
           </div>

@@ -32,7 +32,7 @@ const StreetTypeMenu = ({ onStreetTypeSelect, selectedStreetType }: StreetTypeMe
     const selectedType = streetTypes.find(
       type => type.toLowerCase().replace(/,?\s+/g, '-') === value
     );
-    if (selectedType) {
+    if (selectedType && value !== "elige-tipo-de-via") {
       onStreetTypeSelect(value);
       setIsOpen(false);
     }
