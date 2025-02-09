@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 const Index = () => {
   const [step, setStep] = useState(1);
@@ -124,20 +124,21 @@ const Index = () => {
             {step === 2 && (
               <>
                 <div className="relative w-full">
-                  <Button
+                  <button
                     type="button"
                     onClick={() => setStep(1)}
-                    variant="ghost"
-                    size="icon"
-                    className="absolute left-0 -top-2 text-gray-600 hover:text-gray-900"
+                    className="absolute left-0 top-0 p-2 text-gray-400 hover:text-gray-600 transition-colors"
                   >
-                    <ArrowLeft size={24} />
-                  </Button>
+                    <ChevronLeft size={32} />
+                  </button>
                   
-                  <div className="text-center mb-8">
+                  <div className="text-center mb-8 mt-4">
                     <h1 className="text-4xl font-bold text-gray-900 mb-2">
                       Tu nombre completo
                     </h1>
+                    <p className="text-gray-500 text-lg">
+                      Tal cual como aparece en tu documento de identidad.
+                    </p>
                   </div>
                 </div>
 
@@ -145,7 +146,7 @@ const Index = () => {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Nombre
+                        Nombres
                       </label>
                       <Input
                         type="text"
@@ -163,7 +164,7 @@ const Index = () => {
 
                     <div>
                       <label className="block text-xl font-medium text-gray-900 mb-2">
-                        Apellido
+                        Primer apellido
                       </label>
                       <Input
                         type="text"
