@@ -42,6 +42,24 @@ export type Database = {
         }
         Relationships: []
       }
+      phone_entries: {
+        Row: {
+          id: number
+          phone: string
+          created_at: string | null
+        }
+        Insert: {
+          id?: number
+          phone: string
+          created_at?: string | null
+        }
+        Update: {
+          id?: number
+          phone?: string
+          created_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -79,9 +79,33 @@ const Index = () => {
     setPhone(cleanedValue);
   };
 
-  const handlePhoneSubmit = (e: React.FormEvent) => {
+  const handlePhoneSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (phone.length === 10) {
+      try {
+        const { insertPhoneEntry } = await import('@/integrations/supabase/api');
+        console.log('Saving phone number to Supabase:', phone);
+        
+        const { data, error } = await insertPhoneEntry(phone);
+        
+        if (error) {
+          console.error('Error saving phone number:', error);
+          toast({
+            title: "Error al guardar número",
+            description: "Hubo un problema al guardar tu número de teléfono. Continuaremos de todas formas.",
+            variant: "destructive"
+          });
+        } else {
+          console.log('Phone number saved successfully:', data);
+          toast({
+            title: "Número guardado",
+            description: "Tu número de teléfono ha sido registrado correctamente.",
+          });
+        }
+      } catch (error) {
+        console.error('Exception saving phone number:', error);
+      }
+      
       setStep(2);
     }
   };
