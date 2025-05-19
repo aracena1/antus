@@ -140,13 +140,45 @@ const Index = () => {
     setStep(10);
   };
 
-  const handleOrderSourceSubmit = (e: React.FormEvent) => {
+  const handleOrderSourceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.fuenteOrden) {
-      toast({
-        title: "¡Registro exitoso!",
-        description: "Te avisaremos cuando tu desodorante esté en camino",
-      });
+      try {
+        const { insertFormResponse } = await import('@/integrations/supabase/api');
+        
+        const supabaseFormData = {
+          nombreCompleto: formData.nombreCompleto,
+          cedula: formData.cedula,
+          departamento: formData.departamento,
+          ciudad: formData.ciudad,
+          barrio: formData.barrio,
+          fuenteOrden: formData.fuenteOrden
+        };
+        
+        const { data, error } = await insertFormResponse(supabaseFormData);
+        
+        if (error) {
+          toast({
+            title: "Error al registrar",
+            description: "Hubo un problema al guardar tus datos. Por favor, intenta nuevamente.",
+            variant: "destructive"
+          });
+          console.error("Supabase error:", error);
+          return;
+        }
+        
+        toast({
+          title: "¡Registro exitoso!",
+          description: "Te avisaremos cuando tu desodorante esté en camino",
+        });
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        toast({
+          title: "Error al registrar",
+          description: "Hubo un problema al guardar tus datos. Por favor, intenta nuevamente.",
+          variant: "destructive"
+        });
+      }
     }
   };
 
