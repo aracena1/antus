@@ -147,23 +147,24 @@ const Index = () => {
         const { insertFormResponse } = await import('@/integrations/supabase/api');
         
         const supabaseFormData = {
-          nombreCompleto: formData.nombreCompleto,
+          nombrecompleto: formData.nombreCompleto,
           cedula: formData.cedula,
           departamento: formData.departamento,
           ciudad: formData.ciudad,
           barrio: formData.barrio,
-          fuenteOrden: formData.fuenteOrden
+          fuenteorden: formData.fuenteOrden
         };
         
         const { data, error } = await insertFormResponse(supabaseFormData);
         
         if (error) {
+          console.error("Supabase error details:", error);
+          console.log("Attempted to save data:", supabaseFormData);
           toast({
             title: "Error al registrar",
             description: "Hubo un problema al guardar tus datos. Por favor, intenta nuevamente.",
             variant: "destructive"
           });
-          console.error("Supabase error:", error);
           return;
         }
         
