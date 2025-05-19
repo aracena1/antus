@@ -142,6 +142,7 @@ const Index = () => {
 
   const handleOrderSourceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Form submission initiated with fuenteOrden:", formData.fuenteOrden);
     if (formData.fuenteOrden) {
       try {
         const { insertFormResponse } = await import('@/integrations/supabase/api');

@@ -10,6 +10,7 @@ type FormResponseRow = Database['public']['Tables']['form_responses']['Row'];
  * @returns The inserted data or error
  */
 export const insertFormResponse = async (formData: FormResponseInsert) => {
+  console.log('Attempting to insert form response:', formData);
   const { data, error } = await supabase
     .from('form_responses')
     .insert(formData)
@@ -18,9 +19,12 @@ export const insertFormResponse = async (formData: FormResponseInsert) => {
   
   if (error) {
     console.error('Error inserting form response:', error);
+    console.error('Error code:', error.code);
+    console.error('Error details:', error.details);
     return { data: null, error };
   }
   
+  console.log('Successfully inserted form response:', data);
   return { data, error: null };
 };
 

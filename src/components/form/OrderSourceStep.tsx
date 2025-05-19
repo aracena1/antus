@@ -16,13 +16,15 @@ const OrderSourceStep = ({
   onSourceChange,
   onSubmit,
 }: OrderSourceStepProps) => {
-  const [instagram, setInstagram] = useState("");
+  const [instagram, setInstagram] = useState(selectedSource || "");
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowSuccess(true);
-    onSubmit(e);
+    if (instagram) {
+      setShowSuccess(true);
+      onSubmit(e);
+    }
   };
 
   if (showSuccess) {
@@ -108,7 +110,10 @@ const OrderSourceStep = ({
           <Input
             type="text"
             value={instagram}
-            onChange={(e) => setInstagram(e.target.value)}
+            onChange={(e) => {
+              setInstagram(e.target.value);
+              onSourceChange(e.target.value);
+            }}
             placeholder="@usuario"
             className="w-full p-4 text-lg border-2 border-gray-200 rounded-xl focus:border-[#1C999F] focus:ring-0 transition-colors"
           />
